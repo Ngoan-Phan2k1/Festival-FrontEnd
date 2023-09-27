@@ -1,0 +1,337 @@
+<!-- <section class="hero-wrap" style="background-image: url('../../../assets/images/destination-single.jpg');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-start">
+            <div class="col-md-9 ftco-animate pb-4">
+                <h1 class="mb-3 bread">Discover Greece</h1>
+                <p><a href="#" class="btn btn-primary py-2 px-4">Book this tour</a> <a href="#" class="btn btn-black py-2 px-4">Watch Video</a></p>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+<div class="bg-white"></div>
+
+
+<section class="ftco-section ftco-services-2 ftco-no-pt">
+    <div class="container-fluid px-0 bg-light">
+        <div class="container">
+            <div class="row tour py-5">
+                <div class="col-md d-flex align-self-stretch ftco-animate">
+                    <div class="media block-6 services text-center d-block">
+                        <div class="icon justify-content-center align-items-center d-flex"><span class="flaticon-alarm-clock"></span></div>
+                        <div class="media-body">
+                            <h3 class="heading mb-3">5 Days</h3>
+                        </div>
+                    </div>      
+                </div>
+                <div class="col-md d-flex align-self-stretch ftco-animate">
+                    <div class="media block-6 services text-center d-block">
+                        <div class="icon justify-content-center align-items-center d-flex"><span class="flaticon-manager"></span></div>
+                        <div class="media-body">
+                            <h3 class="heading mb-3">Age 12+</h3>
+                        </div>
+                    </div>      
+                </div>
+                <div class="col-md d-flex align-self-stretch ftco-animate">
+                    <div class="media block-6 services text-center d-block">
+                        <div class="icon justify-content-center align-items-center d-flex"><span class="flaticon-calendar"></span></div>
+                        <div class="media-body">
+                            <h3 class="heading mb-3">April, May, June</h3>
+                        </div>
+                    </div>      
+                </div>
+                <div class="col-md d-flex align-self-stretch ftco-animate">
+                    <div class="media block-6 services text-center d-block">
+                        <div class="icon justify-content-center align-items-center d-flex"><span class="flaticon-layers"></span></div>
+                        <div class="media-body">
+                            <h3 class="heading mb-3">Availability 30</h3>
+                        </div>
+                    </div>      
+                </div>
+                <div class="col-md d-flex align-self-stretch ftco-animate">
+                    <div class="media block-6 services text-center d-block">
+                        <div class="icon justify-content-center align-items-center d-flex"><span class="flaticon-wallet"></span></div>
+                        <div class="media-body">
+                            <h3 class="heading mb-3"><span>$500</span> $400</h3>
+                        </div>
+                    </div>      
+                </div>
+            </div>
+        </div>
+    </div>
+  <div class="container">
+    <div class="row">
+        <div class="col-md-12 tour-wrap mb-5">
+            <div class="row">
+                <div class="col-md-6 d-flex ftco-animate">
+                    <div class="img align-self-stretch" style="background-image: url(../../../assets/images/destination-1.jpg);"></div>
+                </div>
+                <div class="col-md-6 ftco-animate">
+                    <div class="text py-5">
+                        <div class="name">
+                            <h3><a href="#">{{ tour?.name }}</a></h3>
+                        </div>
+                        <div class="attr">
+                            <ul>
+                                <li >
+                                    <div class="at">Mã tour</div>
+                                    <div class="as">{{ tour?.id }} &nbsp;</div>
+                                </li>
+                                <li >
+                                    <div class="at">Thời gian:</div>
+                                    <div class="as">{{ tour?.description }} &nbsp;</div>
+                                </li>
+                                <li >
+                                    <div class="at">Khởi hành</div>
+                                    <div class="as">{{ tour?.fromDate }} &nbsp;</div>
+                                </li>
+                                <li >
+                                    <div class="at">Xuất phát:</div>
+                                    <div class="as">Từ {{ tour?.fromWhere }} &nbsp;</div>
+                                </li>
+                                <li *ngIf="tour">
+                                    <div class="at">Giá:</div>
+                                    <div class="as"> {{ formatPrice(tour.price) }} &nbsp;</div>
+                                </li>
+                                
+                                <li >
+                                    <div class="at">Số chỗ:</div>
+                                    <div class="as">{{ tour?.total }} &nbsp;</div>
+                                </li>
+                            </ul>
+                            <!-- <div class="col-md-12 tour-wrap"> -->
+                                <!-- <p><a href="#" ></a></p> -->
+                                <button class="mybutton">Đặt Tour</button>
+                            <!-- </div> -->
+                        </div>
+                        
+                        <!-- <p class="pos">from <span class="price">$400.00</span>5 days</p>
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+                        <p><a href="#" class="btn btn-secondary">Details</a> <a href="#" class="btn btn-primary">Book now</a></p> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mytitle">
+            <mat-icon> map</mat-icon><h2>Lịch trình</h2>
+        </div>
+
+        
+        <div class="col-md-12 tour-wrap">
+            <div class="day-wrap">
+                <h3 class="pl-5">Ngày 1</h3>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                <img src="../../../assets/images/bg_1.jpg" class="img-fluid" alt="Image error">
+            </div>
+        </div>
+        <div class="col-md-12 tour-wrap">
+            <div class="day-wrap">
+                <h3 class="pl-5">Ngày 2</h3>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+            </div>
+        </div>
+        <div class="col-md-12 tour-wrap">
+            <div class="day-wrap">
+                <h3 class="pl-5">Ngày 3</h3>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+            </div>
+        </div>
+        <div class="col-md-12 tour-wrap">
+            <div class="day-wrap">
+                <h3 class="pl-5">Ngày 4</h3>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+            </div>
+        </div>
+        <div class="col-md-12 tour-wrap">
+            <div class="day-wrap">
+                <h3 class="pl-5">Ngày 5</h3>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+            </div>
+        </div>
+         <div class="col-md-12 tour-wrap">
+            <p><a href="#" class="btn btn-primary py-3 px-4">Đặt Tour</a></p>
+        </div>
+        <div class="col-md-12 tour-wrap">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th scope="row">Departure</th>
+                        <td>
+                            <p>Greece International Airport</p>
+                        </td>
+                        <td></td>
+                    </tr><!-- END TR-->
+
+                    <tr>
+                        <th scope="row">Departure Time</th>
+                        <td>
+                            <p>Please arrive by 10:20 AM for a prompt departure at 10:50 AM</p>
+                        </td>
+                        <td></td>
+                    </tr><!-- END TR-->
+
+                    <tr>
+                        <th scope="row">Return Time</th>
+                        <td>
+                            <p>Approximately 8:30 PM</p>
+                        </td>
+                        <td></td>
+                    </tr><!-- END TR-->
+
+                    <tr>
+                        <th scope="row">Included</th>
+                        <td class="d-flex">
+                            <ul>
+                                <li>Airfare</li>
+                                <li>5 star accomodation</li>
+                            </ul>
+                            <ul>
+                                <li>Local transportation</li>
+                                <li>Private Professional Guide</li>
+                            </ul>
+                        </td>
+                        <td></td>
+                    </tr><!-- END TR-->
+
+                    <tr>
+                        <th scope="row">Not Included</th>
+                        <td class="d-flex">
+                            <ul>
+                                <li>Departure Taxes</li>
+                            </ul>
+                            <ul>
+                                <li>Entry Fees</li>
+                            </ul>
+                        </td>
+                        <td></td>
+                    </tr><!-- END TR-->
+                    <!-- <tr>
+                        <th scope="row">Maps</th>
+                        <td>
+                                    <div id="map"></div>
+                        </td>
+                    </tr>     -->
+                </tbody>
+            </table>
+        </div>
+        <!-- <div class="col-md-12 tour-wrap">
+            <div class="pt-5 mt-5">
+                <h3 class="mb-5">6 Reviews</h3>
+                <ul class="comment-list">
+                    <li class="comment">
+                        <div class="vcard bio">
+                            <img src="../../../assets/images/person_1.jpg" alt="Image placeholder">
+                        </div>
+                        <div class="comment-body">
+                            <h3>John Doe</h3>
+                            <div class="meta">October 03, 2018 at 2:21pm</div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+                            <p><a href="#" class="reply">Reply</a></p>
+                        </div>
+                    </li>
+
+                    <li class="comment">
+                        <div class="vcard bio">
+                            <img src="../../../assets/images/person_1.jpg" alt="Image placeholder">
+                        </div>
+                        <div class="comment-body">
+                            <h3>John Doe</h3>
+                            <div class="meta">October 03, 2018 at 2:21pm</div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+                            <p><a href="#" class="reply">Reply</a></p>
+                        </div>
+
+                        <ul class="children">
+                            <li class="comment">
+                            <div class="vcard bio">
+                                <img src="../../../assets/images/person_1.jpg" alt="Image placeholder">
+                            </div>
+                            <div class="comment-body">
+                                <h3>John Doe</h3>
+                                <div class="meta">October 03, 2018 at 2:21pm</div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+                                <p><a href="#" class="reply">Reply</a></p>
+                            </div>
+
+
+                                <ul class="children">
+                                    <li class="comment">
+                                        <div class="vcard bio">
+                                            <img src="../../../assets/images/person_1.jpg" alt="Image placeholder">
+                                        </div>
+                                        <div class="comment-body">
+                                            <h3>John Doe</h3>
+                                            <div class="meta">October 03, 2018 at 2:21pm</div>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+                                            <p><a href="#" class="reply">Reply</a></p>
+                                        </div>
+
+                                        <ul class="children">
+                                            <li class="comment">
+                                                <div class="vcard bio">
+                                                    <img src="../../../assets/images/person_1.jpg" alt="Image placeholder">
+                                                </div>
+                                                <div class="comment-body">
+                                                    <h3>John Doe</h3>
+                                                    <div class="meta">October 03, 2018 at 2:21pm</div>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+                                                    <p><a href="#" class="reply">Reply</a></p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="comment">
+                        <div class="vcard bio">
+                            <img src="../../../assets/images/person_1.jpg" alt="Image placeholder">
+                        </div>
+                        <div class="comment-body">
+                            <h3>John Doe</h3>
+                            <div class="meta">October 03, 2018 at 2:21pm</div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+                            <p><a href="#" class="reply">Reply</a></p>
+                        </div>
+                    </li>
+                </ul>
+                
+          
+                <div class="comment-form-wrap pt-5">
+                    <h3 class="mb-5">Leave a comment</h3>
+                    <form action="#" class="p-5 bg-light">
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" class="form-control" id="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" class="form-control" id="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="website">Website</label>
+                            <input type="url" class="form-control" id="website">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div> -->
+    </div>
+  </div>
+</section> <!-- .section -->
+
+
+
