@@ -16,6 +16,8 @@ import { AppRoutingModule } from './app.routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CurrencyPipe } from '@angular/common';
 import { TourDetailComponent } from './tour/tour-detail/tour-detail.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 @NgModule({
@@ -36,10 +38,11 @@ import { TourDetailComponent } from './tour/tour-detail/tour-detail.component';
     BrowserAnimationsModule,
     MatIconModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [
-    CurrencyPipe
+    CurrencyPipe,
   ],
   bootstrap: [AppComponent]
 })

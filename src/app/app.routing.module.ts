@@ -4,6 +4,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { TourComponent } from './tour/tour.component';
 import { TourDetailComponent } from './tour/tour-detail/tour-detail.component';
 
+
 const appRoutes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component:  HomePageComponent },

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'festival-ui';
+
+  // @HostListener('window:beforeunload', ['$event'])
+  // unloadHandler(event: Event): void {
+  //   // Xóa dữ liệu trong Local Storage khi trang web được làm mới
+  //   localStorage.clear();
+  // }
 }

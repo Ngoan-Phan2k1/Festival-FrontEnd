@@ -97,12 +97,16 @@
                                 
                                 <li >
                                     <div class="at">Số chỗ:</div>
-                                    <div class="as">{{ tour?.total }} &nbsp;</div>
+                                    <div class="as">{{ tour?.capacity }} &nbsp;</div>
+                                </li>
+                                <li >
+                                    <div class="at">Số chỗ còn nhận:</div>
+                                    <div class="as">{{ tour?.canbook }} &nbsp;</div>
                                 </li>
                             </ul>
                             <!-- <div class="col-md-12 tour-wrap"> -->
                                 <!-- <p><a href="#" ></a></p> -->
-                                <button class="mybutton">Đặt Tour</button>
+                                <button class="mybutton" (click)="open(content)" >Đặt Tour</button>
                             <!-- </div> -->
                         </div>
                         
@@ -333,5 +337,69 @@
   </div>
 </section> <!-- .section -->
 
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<!-- <h4 class="" id="modal-basic-title">Thông tin</h4> -->
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    
+	</div>
+
+    <div class="h-popup">
+        <h4>Thông tin</h4>
+    </div>
+	<div class="modal-body">
+		<form #bookedTour="ngForm" (ngSubmit)="onSubmitBooked(bookedTour)">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Tour</label>
+              <input 
+                type="text" class="form-control" id="tour" aria-describedby="tour" value={{tour?.name}} disabled>
+            </div>
+            <div class="form-group">
+                <label for="phone">Số điện thoại</label>
+                <input 
+                    ngModel
+                    type="tel" 
+                    class="form-control" 
+                    id="phone" 
+                    aria-describedby="phone" 
+                    name="phone"
+                    required
+                    pattern="[0-9]*"
+                    #phone="ngModel"
+                    minlength="10"
+                    maxlength="10"
+
+                >
+                <small *ngIf="!phone.valid && phone.touched" id="phone" class="form-text text-muted">Vui lòng số điện thoại hợp lệ!</small>
+            </div>
+            <div class="form-group">
+                <label for="booked">Số chỗ</label>
+                <input 
+                    type="number" 
+                    class="form-control" 
+                    id="booked" 
+                    aria-describedby="capacity" 
+                    name="booked"
+                    required
+                    min="1" 
+                    [ngModel]="1"
+                    #capacityInput="ngModel"
+                    (input)="checkInput($event)"
+                >
+                <small *ngIf="isCapacityInvalid" id="capacity" class="form-text text-muted">
+                    Vui lòng nhập vào giá trị hợp lệ, lớn hơn hoặc bằng 1!
+                </small>
+            </div>
+            
+            <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-outline-dark" (click)="modal.close('Save click')" [disabled]="!bookedTour.valid">Xác nhận</button>
+            </div>
+        </form>
+	</div>
+	<!-- <div class="modal-footer">
+		<button type="submit" class="btn btn-outline-dark" (click)="modal.close('Save click')">Xác nhận</button>
+	</div> -->
+</ng-template>
 
 

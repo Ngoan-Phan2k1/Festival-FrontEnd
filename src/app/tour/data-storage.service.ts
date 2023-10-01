@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map, tap, take, exhaustMap } from 'rxjs/operators';
 import { Tour } from "./tour.model";
+import { TourDetailService } from "./tour-detail/tour-detail.service";
 
 @Injectable({ providedIn: 'root' })
 export class DataStorageService {
@@ -9,7 +10,9 @@ export class DataStorageService {
 
 
     constructor(
-        private http: HttpClient
+        private http: HttpClient,
+        private tourDetailService: TourDetailService
+        
     ) {}
 
 
@@ -29,8 +32,10 @@ export class DataStorageService {
                     description: tour.description,
                     fromDate: tour.fromDate,
                     toDate: tour.toDate,
-                    total: tour.total,
-                    price: tour.price
+                    capacity: tour.capacity,
+                    booked: tour.booked,
+                    price: tour.price,
+                    canbook: tour.capacity - tour.booked
                 }));
             })
         );
@@ -43,8 +48,13 @@ export class DataStorageService {
         )
         .pipe(
             map(tour => {
-                const { id, name, fromWhere, toWhere, description, fromDate, toDate, price, total } = tour;
-                return { id, name, fromWhere, toWhere, description, fromDate, toDate, price, total };
+                const { id, name, fromWhere, toWhere, description, fromDate, toDate, price, capacity, booked } = tour;
+                const canbook = capacity - booked;
+                return { id, name, fromWhere, toWhere, description, fromDate, toDate, price, capacity, booked, canbook };
+            }),
+            tap((tour) => {
+               console.log("Tour khi set cho Tour: ", tour)
+                this.tourDetailService.setTourDetail(tour)
             })
         )
     }

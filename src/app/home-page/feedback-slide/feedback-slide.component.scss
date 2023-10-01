@@ -1,0 +1,254 @@
+@import '../../../assets/scss/bootstrap/bootstrap';
+@import '../../../assets/scss/bootstrap/variables';
+
+
+$font-primary: 'Poppins',Arial, sans-serif;
+$font-secondary: 'Cormorant Garamond',Georgia, serif;
+
+$white: #fff;
+$black: #000000;
+$darken: #232931;
+
+$primary: #e2c0bb;
+$secondary: #b2bbc9;
+
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+       -moz-border-radius: $radius;
+        -ms-border-radius: $radius;
+            border-radius: $radius;
+  }
+  
+  @mixin transition($transition) {
+      -moz-transition:    all $transition ease;
+      -o-transition:      all $transition ease;
+      -webkit-transition: all $transition ease;
+      -ms-transition: 		all $transition ease;
+      transition:         all $transition ease;
+  }
+
+
+a {
+	transition: .3s all ease;
+	color: $primary;
+	&:hover, &:focus {
+		text-decoration: none;
+		color: $primary;
+		outline: none !important;
+	}
+}
+h1, h2, h3, h4, h5,
+.h1, .h2, .h3, .h4, .h5 {
+	line-height: 1.5;
+	color: rgba(0,0,0,.9);
+	font-weight: 400;
+	font-family: $font-secondary;
+}
+
+.bg-primary{
+	background: $primary;
+}
+
+.c_right {
+	padding-top: 7px;
+	margin-left: -9px;
+}
+
+.ftco-section {
+	padding: 7em 0;
+	position: relative;
+	@include media-breakpoint-down(sm){
+		padding: 6em 0;
+	}
+}
+
+.ftco-no-pt{
+	padding-top: 0 !important;
+}
+.ftco-no-pb{
+	padding-bottom: 0 !important;
+}
+
+.ftco-bg-dark {
+	background: #3c312e;
+}
+
+.img,
+.blog-img,
+.user-img{
+	  background-size: cover;
+	  background-repeat: no-repeat;
+	  background-position: center center;
+}
+
+
+.testimony-section{
+	position: relative;
+	background: $secondary;
+	overflow: hidden;
+	.svg-blob{
+		position: absolute;
+		// transform: translate(-15em, -15em);
+		top: -10em;
+		right: 0;
+		left: 0;
+		right: 0;
+		margin-left: -10em;
+	}
+	.svg-blob-2{
+		position: absolute;
+		// transform: translate(-15em, -15em);
+		bottom: -10em;
+		right: 0;
+		margin-right: -10em;
+	}
+	.svg-blob{}
+	.overlay{
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		content: '';
+		opacity: .7;
+		background: $darken;
+		// @include gradient-background();
+	}
+	// .owl-carousel{
+	// 	margin: 0;
+	// }
+	// .owl-carousel .owl-stage-outer{
+	// 	padding-top: 0;
+	// 	padding-bottom: 0;
+	// 	position: relative;
+	// }
+	.owl-nav {
+		position: absolute;
+		bottom: 60px !important;
+		left: 0;
+		right: 0;
+		// max-width: 1200px;
+		margin: 0 auto;
+		@include media-breakpoint-down(md){
+			display: none;
+		}
+		// .owl-prev,
+		// .owl-next {
+		// 	position: absolute;
+		// 	width: 60px;
+		// 	height: 60px;
+		// 	background: $white !important;
+		// 	@include transition(.7s);
+		// 	span {
+		// 		&:before {
+		// 			font-size: 20px;
+		// 			margin-top: 7px;
+		// 			color: $black;
+		// 		}
+		// 	}
+		// 	opacity: 1;
+		// }
+		// .owl-prev {
+		// 	top: 0 !important;
+		// 	right: 0 !important;
+		// 	@include media-breakpoint-up(lg){
+		// 		right: 61px !important;
+		// 	}
+		// 	&:hover, &:focus{
+		// 		background: $black !important;
+		// 		outline: none !important;
+		// 		span {
+		// 			&:before {
+		// 				font-size: 20px;
+		// 				margin-top: 7px;
+		// 				color: $white;
+		// 			}
+		// 		}
+		// 	}
+		// }
+		// .owl-next {
+		// 	top: 0 !important;
+		// 	right: 0 !important;
+		// 	@include media-breakpoint-up(lg){
+		// 		right: 0 !important;
+		// 	}
+		// 	&:hover, &:focus{
+		// 		background: $black !important;
+		// 		outline: none !important;
+		// 		span {
+		// 			&:before {
+		// 				font-size: 24px;
+		// 				margin-top: 7px;
+		// 				color: $white;
+		// 			}
+		// 		}
+		// 	}
+		// }
+	}
+	.owl-dots {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 40px;
+		width: 100%;
+		text-align: center;
+		
+		// .owl-dot {
+		// 	position: relative;
+		// 	width: 10px;
+		// 	height: 10px;
+		// 	margin: 5px;
+		// 	border-radius: 50%;
+		// 	background: rgba(255,255,255,.3);
+		// 	&.active {
+		// 		background: $white;
+		// 	}
+		// }
+		//display: none;
+	}
+}
+
+.testimony-wrap{
+	display: block;
+	position: relative;
+	color: rgba(255,255,255,.7);
+	.user-img{
+		width: 130px;
+		height: 130px;
+		border-radius: (50%);
+		position: relative;
+		margin: 0 auto;
+		background-position: top center;
+		.quote{
+			position: absolute;
+			bottom: -10px;
+			right: 0;
+			width: 40px;
+			height: 40px;
+			background: $primary;
+			@include border-radius(50%);
+			i{
+				color: $white;
+			}
+		}
+	}
+	.text{
+		padding-top: 6em;
+		margin-top: -65px;
+		@include border-radius(4px);
+	}
+	p{
+		font-family: $secondary;
+		// font-size: 20px;
+	}
+	.name{
+		font-weight: 400;
+		margin-bottom: 0;
+		color: $white;
+	}
+	.position{
+		font-size: 18px;
+		color: rgba(255,255,255,.8);
+	}
+}
