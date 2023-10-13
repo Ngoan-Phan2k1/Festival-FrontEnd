@@ -21,7 +21,7 @@
                     <div class="media block-6 services text-center d-block">
                         <div class="icon justify-content-center align-items-center d-flex"><span class="flaticon-alarm-clock"></span></div>
                         <div class="media-body">
-                            <h3 class="heading mb-3">5 Days</h3>
+                            <h3 class="heading mb-3">{{ tour?.description }}</h3>
                         </div>
                     </div>      
                 </div>
@@ -29,7 +29,7 @@
                     <div class="media block-6 services text-center d-block">
                         <div class="icon justify-content-center align-items-center d-flex"><span class="flaticon-manager"></span></div>
                         <div class="media-body">
-                            <h3 class="heading mb-3">Age 12+</h3>
+                            <h3 class="heading mb-3">Tuổi 12+</h3>
                         </div>
                     </div>      
                 </div>
@@ -37,7 +37,7 @@
                     <div class="media block-6 services text-center d-block">
                         <div class="icon justify-content-center align-items-center d-flex"><span class="flaticon-calendar"></span></div>
                         <div class="media-body">
-                            <h3 class="heading mb-3">April, May, June</h3>
+                            <h3 class="heading mb-3">{{tour?.fromDate}}</h3>
                         </div>
                     </div>      
                 </div>
@@ -45,7 +45,7 @@
                     <div class="media block-6 services text-center d-block">
                         <div class="icon justify-content-center align-items-center d-flex"><span class="flaticon-layers"></span></div>
                         <div class="media-body">
-                            <h3 class="heading mb-3">Availability 30</h3>
+                            <h3 class="heading mb-3">Số chỗ {{ tour?.capacity }}</h3>
                         </div>
                     </div>      
                 </div>
@@ -53,7 +53,10 @@
                     <div class="media block-6 services text-center d-block">
                         <div class="icon justify-content-center align-items-center d-flex"><span class="flaticon-wallet"></span></div>
                         <div class="media-body">
-                            <h3 class="heading mb-3"><span>$500</span> $400</h3>
+                            <h3 class="heading mb-3">
+                                <!-- <span>$500</span>  -->
+                                {{tour?.price | currency:'VND':'symbol':'1.0-0'}}
+                            </h3>
                         </div>
                     </div>      
                 </div>
@@ -65,7 +68,7 @@
         <div class="col-md-12 tour-wrap mb-5">
             <div class="row">
                 <div class="col-md-6 d-flex ftco-animate">
-                    <div class="img align-self-stretch" style="background-image: url(../../../assets/images/destination-1.jpg);"></div>
+                    <div class="img align-self-stretch" style="background-image: url({{tour?.url}});"></div>
                 </div>
                 <div class="col-md-6 ftco-animate">
                     <div class="text py-5">
@@ -104,10 +107,12 @@
                                     <div class="as">{{ tour?.canbook }} &nbsp;</div>
                                 </li>
                             </ul>
-                            <!-- <div class="col-md-12 tour-wrap"> -->
-                                <!-- <p><a href="#" ></a></p> -->
-                                <button class="mybutton" (click)="open(content)" >Đặt Tour</button>
-                            <!-- </div> -->
+                                <!-- <button class="mybutton" (click)="open(content)" >
+                                    Đặt Tour
+                                </button> -->
+                                <button class="mybutton" (click)="checkLogin()" >
+                                    Đặt Tour
+                                </button>
                         </div>
                         
                         <!-- <p class="pos">from <span class="price">$400.00</span>5 days</p>
@@ -122,6 +127,17 @@
             <mat-icon> map</mat-icon><h2>Lịch trình</h2>
         </div>
 
+        <div class="col-md-12 tour-wrap">
+            <app-tour-schedule
+                *ngIf="tour?.id !== null"
+                [tour_id]="tour?.id"
+            ></app-tour-schedule>
+        </div>
+
+        <!-- <div class="mytitle">
+            <mat-icon> map</mat-icon><h2>Lịch trình</h2>
+        </div>
+        
         
         <div class="col-md-12 tour-wrap">
             <div class="day-wrap">
@@ -166,7 +182,7 @@
                             <p>Greece International Airport</p>
                         </td>
                         <td></td>
-                    </tr><!-- END TR-->
+                    </tr>
 
                     <tr>
                         <th scope="row">Departure Time</th>
@@ -174,7 +190,7 @@
                             <p>Please arrive by 10:20 AM for a prompt departure at 10:50 AM</p>
                         </td>
                         <td></td>
-                    </tr><!-- END TR-->
+                    </tr>
 
                     <tr>
                         <th scope="row">Return Time</th>
@@ -182,7 +198,7 @@
                             <p>Approximately 8:30 PM</p>
                         </td>
                         <td></td>
-                    </tr><!-- END TR-->
+                    </tr>
 
                     <tr>
                         <th scope="row">Included</th>
@@ -197,7 +213,7 @@
                             </ul>
                         </td>
                         <td></td>
-                    </tr><!-- END TR-->
+                    </tr>
 
                     <tr>
                         <th scope="row">Not Included</th>
@@ -210,16 +226,11 @@
                             </ul>
                         </td>
                         <td></td>
-                    </tr><!-- END TR-->
-                    <!-- <tr>
-                        <th scope="row">Maps</th>
-                        <td>
-                                    <div id="map"></div>
-                        </td>
-                    </tr>     -->
+                    </tr>
                 </tbody>
             </table>
-        </div>
+        </div> -->
+
         <!-- <div class="col-md-12 tour-wrap">
             <div class="pt-5 mt-5">
                 <h3 class="mb-5">6 Reviews</h3>

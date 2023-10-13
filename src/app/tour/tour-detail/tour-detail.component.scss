@@ -33,6 +33,16 @@ $secondary: #b2bbc9;
 	margin-left: -9px;
 }
 
+@font-face {
+	font-family: Montserrat-Regular;
+	src: url("../../../assets/fonts/Montserrat/static/Montserrat-Regular.ttf");
+}
+
+@font-face {
+	font-family: Montserrat-Bold;
+	src: url("../../../assets/fonts/Montserrat/static/Montserrat-Bold.ttf");
+}
+
 // html {
 // 	// overflow-x: hidden;
 // }
@@ -1187,8 +1197,8 @@ h1, h2, h3, h4, h5,
 	}
 
 	h2 {
-		//font-family: $font-primary;
-		font-size: 25px;
+		font-family: Montserrat-Bold;
+		font-size: 22px;
 	}
 }
 .tour-wrap{
@@ -1260,6 +1270,10 @@ h1, h2, h3, h4, h5,
 				border: none;
   				outline: none; /* Loại bỏ viền focus */
 
+				a {
+					color: #fff;
+				}
+
 				&:hover {
 					cursor: pointer;
 					background: #ed0080;
@@ -1278,7 +1292,7 @@ h1, h2, h3, h4, h5,
 
 		h3{
 			//color: #ed0080;
-			font-family: $font-primary;
+			font-family: Montserrat-Bold;
 			font-size: 20px;
 			//margin-top: -20px;
 			
@@ -2691,5 +2705,20 @@ h1, h2, h3, h4, h5,
 
 input.ng-invalid.ng-touched {
 	border: 1px solid red;
+}
+
+.btn-close {
+	outline: none;
+	border: none;
+
+	&:focus {
+		outline: none;
+		border: none;
+		box-shadow: none;
+	}
+}
+
+.modal-header {
+	border-bottom: none;
 }
   

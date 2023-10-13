@@ -1,0 +1,187 @@
+<section class="hero-wrap hero-wrap-2" style="background-image: url('../../assets/images/bg_4.jpg');" >
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row no-gutters slider-text align-items-end justify-content-start">
+        <div class="col-md-9 ftco-animate pb-4">
+          <h1 class="mb-3 bread">Tìm khách sạn</h1>
+           <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Hotel <i class="ion-ios-arrow-forward"></i></span></p>
+        </div>
+      </div>
+    </div>
+</section>
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 pr-lg-4">
+                <div class="row">
+                    <div class="col-md-6 col-lg-4 ftco-animate" *ngFor="let hotel of hotels; let i = index">
+                        <!-- <div class="project">
+                            <div class="img">
+                                <div class="vr"><span>Sale</span></div>
+                                <a [routerLink]="['/hotel', hotel.id]" routerLinkActive="active"><img [src]="images[i]" class="img-fluid" alt="Image" style="height: 200px;"></a>
+                            </div>
+                            <div class="text">
+                                <h4 class="price">
+                                    <span class="old-price mr-2">$500</span>
+                                    $400
+                                </h4>
+
+                                <span>3 nights</span>
+                                <h3><a [routerLink]="['/hotel', hotel.id]">{{ hotel.name }}</a></h3>
+                                <div class="star d-flex clearfix">
+                                    <div class="mr-auto float-left">
+                                        <span class="ion-ios-star"></span>
+                                        <span class="ion-ios-star"></span>
+                                        <span class="ion-ios-star"></span>
+                                        <span class="ion-ios-star"></span>
+                                        <span class="ion-ios-star"></span>
+                                    </div>
+                                    <div class="float-right">
+                                        <span class="rate"><a href="#">(120)</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="images/hotel-1.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
+                                <span class="icon-expand"></span>
+                            </a>
+                        </div> -->
+                        <div class="wrapBox">
+                            <a [routerLink]="['/hotel', hotel.id]" routerLinkActive="active">
+                                <div class="img_SlideSecti">
+                                    <img [src]="hotel.url" alt="Image">
+                                </div>  
+                            </a>
+                            <div class="contentSection">
+                                <a [routerLink]="['/hotel', hotel.id]" routerLinkActive="active">
+                                    <h3>{{hotel.name}}</h3>
+                                    <ul class="racting">
+                                        <li *ngFor="let item of [1, 2, 3, 4, 5]"><mat-icon>star</mat-icon></li>
+                                    </ul>
+                                    <div class="timeClock">
+                                        <div></div>
+                                        <div class="divRight">
+                                            <ul>
+                                                <li>
+                                                    <img src="../../assets/images/bed-icon.jpg" alt="icon">
+                                                </li>
+                                                <li>
+                                                    <img src="../../assets/images/ăn.png" alt="icon">
+                                                </li>
+                                                
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="priceForm">
+                                    <a [routerLink]="['/hotel', hotel.id]" routerLinkActive="active">
+                                        <div class="priceLeft">
+                                            <div class="rateStar">
+                                                <span class="qty_star">5.0</span>
+                                                <img src="../../assets/images/rate.png" alt="">
+                                                <span class="rateType">Rất tốt</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="location">
+                                        <a class="titleTour">
+                                            <img src="../../assets/images/f5.png" alt="icon"> {{ hotel.location }}
+                                        </a>
+                                        <a class="titleTour" [routerLink]="['/hotel', hotel.id]" routerLinkActive="active">
+                                            <span class="priceNew">Giá liên hệ</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col text-center">
+                        <div class="block-27">
+                            <ul>
+                                <li><a href="#">&lt;</a></li>
+                                <li class="active"><span>1</span></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a href="#">&gt;</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- end -->
+            <!-- <div class="col-lg-3 p-4 bg-light">
+                <div class="search-wrap-1 ftco-animate">
+                    <h2 class="mb-3">Find Hotel</h2>
+                    <form action="#" class="search-property-1">
+                        <div class="row">
+                            <div class="col-lg-12 align-items-end mb-3">
+                                <div class="form-group">
+                                    <label for="#">Places</label>
+                                <div class="form-field">
+                                    <div class="icon"><span class="ion-ios-search"></span></div>
+                                <input type="text" class="form-control" placeholder="Search place">
+                            </div>
+                        </div>
+                            </div>
+                            <div class="col-lg-12 align-items-end mb-3">
+                                <div class="form-group">
+                                    <label for="#">Check-in date</label>
+                                    <div class="form-field">
+                                    <div class="icon"><span class="ion-ios-calendar"></span></div>
+                                <input type="text" class="form-control checkin_date" placeholder="Check In Date">
+                            </div>
+                        </div>
+                            </div>
+                            <div class="col-lg-12 align-items-end mb-3">
+                                <div class="form-group">
+                                    <label for="#">Check-out date</label>
+                                    <div class="form-field">
+                                    <div class="icon"><span class="ion-ios-calendar"></span></div>
+                                <input type="text" class="form-control checkout_date" placeholder="Check Out Date">
+                            </div>
+                        </div>
+                            </div>
+                            <div class="col-lg-12 align-items-end mb-3">
+                                <div class="form-group">
+                                    <label for="#">Price Limit</label>
+                                    <div class="form-field">
+                                        <div class="select-wrap">
+                                            <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                            <select name="" id="" class="form-control">
+                                                <option value="">$5,000</option>
+                                                <option value="">$10,000</option>
+                                                <option value="">$50,000</option>
+                                                <option value="">$100,000</option>
+                                                <option value="">$200,000</option>
+                                                <option value="">$300,000</option>
+                                                <option value="">$400,000</option>
+                                                <option value="">$500,000</option>
+                                                <option value="">$600,000</option>
+                                                <option value="">$700,000</option>
+                                                <option value="">$800,000</option>
+                                                <option value="">$900,000</option>
+                                                <option value="">$1,000,000</option>
+                                                <option value="">$2,000,000</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 align-self-end">
+                                <div class="form-group">
+                                    <div class="form-field">
+                                        <input type="submit" value="Search" class="form-control btn btn-primary">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>  -->
+        </div>
+    </div>
+</section>

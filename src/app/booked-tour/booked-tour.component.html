@@ -1,0 +1,294 @@
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <!-- <div class="col-md-6 text-center mb-4">
+                <h2 class="heading-section">Table #06</h2>
+            </div> -->
+            <h2 class="h5 mb-4 text-center" *ngIf="bookedTours.length === 0">Quý khách chưa đặt tour nào</h2>
+        </div>
+        <div class="row" >
+            <div class="col-md-12" *ngIf="bookedTours.length !== 0">
+                <h2 class="h5 mb-4 text-center">Đơn đặt chỗ của quý khách</h2>
+                <div class="table-wrap">
+                    <!-- <table class="table">
+                        <thead class="thead-primary">
+                            <tr>
+                                <th class="column_1">Tour</th>
+                                <th class="column_2">Ngày đặt</th>
+                                <th class="column_3">Giá</th>
+                                <th class="column_4">Số chỗ đặt</th>
+                                <th class="column_5">Tổng cộng</th>
+                                <th class="column_6">Trạng thái</th>
+                                <th>&nbsp;</th>
+                                <th>&nbsp;</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="alert" role="alert" *ngFor="let bookedtour of bookedTours">
+                                <td>
+                                    <div class="email">
+                                        <span>{{ bookedtour.tourDto.name}}</span>
+                                    </div>
+                                </td>
+                                <td>{{ bookedtour.dateOfBooking | date:'dd/MM/yyyy HH:mm:ss'}}</td>
+                                <td>{{ bookedtour.tourDto.price | currency:'VND':'symbol':'1.0-0' }}</td>
+                                <td>{{ bookedtour.booked }}</td>
+                                <td>{{ bookedtour.tourDto.price * bookedtour.booked | currency:'VND':'symbol':'1.0-0'   }}</td>
+                                <td>
+                                    {{ bookedtour.checkout ? 'Đã thanh toán' : 'Thanh toán tại quầy'}}
+                                </td>
+                                <td>
+                                    <button 
+                                        type="button" 
+                                        class="close, checkoutButton" 
+                                        data-dismiss="alert" 
+                                        aria-label="Close" 
+                                        (click)="openCheckout(
+                                            contentCheckout, 
+                                            bookedtour.booked_id, 
+                                            bookedtour.booked * bookedtour.tourDto.price,
+                                            bookedtour.checkout
+                                        )">
+
+                                        <span aria-hidden="true">Thanh toán</span>
+                                    </button>
+                                </td>
+                                <td>
+                                    <button type="button" class="cancelButton" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true" (click)="onCancleBooked(bookedtour.booked_id, bookedtour.checkout)">Hủy đặt</span>
+                                    </button>
+                                </td>
+                                
+                            </tr>
+
+                            
+
+                        </tbody>
+                    </table> -->
+
+                    <div class="mytable">
+                        <table class="table-bordered table-price-inclusion">
+                            <thead>
+                                <tr>
+                                    <th class="text-center" style="width: 250px;">Tour</th>
+                                    <th class="text-center" style="width: 140px;">Ngày đặt</th>
+                                    <th class="text-center" style="width: 140px;">Giá</th>
+                                    <th class="text-center" style="width: 140px;">Số chỗ đặt</th>
+                                    <th class="text-center" style="width: 140px;">Tổng cộng</th>
+                                    <th class="text-center" style="width: 130px;">Trạng thái</th>
+                                    <th>&nbsp;</th>
+                                    <th>&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody class="tableCombo">
+                                <tr *ngFor="let bookedtour of bookedTours">
+                                    <th style="font-weight: normal;">
+                                        <span class="show-name">{{ bookedtour.tourDto.name}}</span>
+                                    </th>
+                                    <th style="font-weight: normal;">
+                                        <div class="acc-detailCom">
+                                            {{ bookedtour.dateOfBooking | date:'dd/MM/yyyy HH:mm:ss'}}
+                                        
+                                        </div>
+                                    </th>
+                                    <th style="text-align: center !important; font-weight: normal;">
+                                        <span class="show-acc">{{ bookedtour.tourDto.price | currency:'VND':'symbol':'1.0-0' }}/ tour</span>
+                                    </th>
+                                    <th style="text-align: center !important; font-weight: normal;">
+                                        <span class="show-acc">{{ bookedtour.booked }} chỗ</span>
+                                    </th>
+                                    <th style="text-align: center !important; font-weight: normal;">
+                                        <span class="show-acc">{{ bookedtour.tourDto.price * bookedtour.booked | currency:'VND':'symbol':'1.0-0'   }}</span>
+                                    </th>
+                                    <th style="text-align: center !important; font-weight: normal;">
+                                        {{ bookedtour.checkout ? 'Đã thanh toán' : 'Thanh toán tại quầy'}}
+                                    </th>
+                                    <th style="text-align: center !important; font-weight: normal;">
+                                        <span class="booktour">
+                                            <a
+                                            (click)="openCheckout(
+                                                contentCheckout, 
+                                                bookedtour.booked_id, 
+                                                bookedtour.booked * bookedtour.tourDto.price,
+                                                bookedtour.checkout
+                                            )"
+                                            >Thanh toán</a>
+                                        </span>
+                                    </th>
+                                    <th style="text-align: center !important; font-weight: normal;">
+                                        <span class="booktour">
+                                            <a
+                                            (click)="onCancleBooked(bookedtour.booked_id, bookedtour.checkout)"
+                                            >Hủy đặt</a>
+                                        </span>
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>  
+                </div>
+
+                <!-- <h2 class="h5 mb-4 text-center" style="margin-top: 40px;">Đơn liên hệ khách sạn của quý khách</h2>
+                <div class="table-wrap" style="margin-top: 40px;">
+                    <div class="mytable">
+                        <table class="table-bordered table-price-inclusion">
+                            <thead>
+                                <tr>
+                                    <th class="text-center" style="width: 250px;">Khách sạn</th>
+                                    <th class="text-center" style="width: 250px;">Loại phòng</th>
+                                    <th class="text-center" style="width: 140px;">Giá</th>
+                                    <th class="text-center" style="width: 130px;">Trạng thái</th>
+                                    <th>&nbsp;</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody class="tableCombo">
+                                <tr *ngFor="let contact of contacts; let i = index">
+                                    <th style="font-weight: normal;">
+                                        <span class="show-name">{{ hotels[i]?.name }}</span>
+                                    </th>
+                                    <th style="font-weight: normal;">
+                                        <div class="show-acc">
+                                            {{ contact?.roomDTO.name }}
+                                        
+                                        </div>
+                                    </th>
+                                    <th style="text-align: center !important; font-weight: normal;">
+                                        <span class="show-acc">{{ contact?.roomDTO.price | currency:'VND':'symbol':'1.0-0' }}/ phòng</span>
+                                    </th>
+                                    <th style="text-align: center !important; font-weight: normal;">
+                                        Some thing
+                                    </th>
+                                    <th style="text-align: center !important; font-weight: normal;">
+                                        <span class="booktour">
+                                            <a
+                                            
+                                            >Hủy đặt</a>
+                                        </span>
+                                    </th>
+                                    
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>  
+                </div> -->
+
+            </div>
+
+            <div class="col-md-9" *ngIf="contacts.length !== 0">
+                <h2 class="h5 mb-4 text-center" style="margin-top: 40px;">Đơn liên hệ khách sạn của quý khách</h2>
+                <div class="table-wrap" style="margin-top: 40px;">
+                    <div class="mytable">
+                        <table class="table-bordered table-price-inclusion">
+                            <thead>
+                                <tr>
+                                    <th class="text-center" style="width: 250px;">Khách sạn</th>
+                                    <th class="text-center" style="width: 250px;">Loại phòng</th>
+                                    <th class="text-center" style="width: 140px;">Giá</th>
+                                    <th class="text-center" style="width: 130px;">Trạng thái</th>
+                                    <th>&nbsp;</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody class="tableCombo">
+                                <tr *ngFor="let contact of contacts; let i = index">
+                                    <th style="font-weight: normal;">
+                                        <span class="show-name">{{ hotels[i]?.name }}</span>
+                                    </th>
+                                    <th style="font-weight: normal;">
+                                        <div class="show-acc">
+                                            {{ contact?.roomDTO.name }}
+                                        
+                                        </div>
+                                    </th>
+                                    <th style="text-align: center !important; font-weight: normal;">
+                                        <span class="show-acc">{{ contact?.roomDTO.price | currency:'VND':'symbol':'1.0-0' }}/ phòng</span>
+                                    </th>
+                                    <th style="text-align: center !important; font-weight: normal;">
+                                        Some thing
+                                    </th>
+                                    <th style="text-align: center !important; font-weight: normal; width: 220px;">
+                                        <span class="booktour">
+                                            <a (click)="onCancleContact(contact?.id)"
+                                            
+                                            >Hủy yêu cầu</a>
+                                        </span>
+                                    </th>
+                                    
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+<ng-template #contentCheckout let-modal>
+	<div class="modal-header">
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button> 
+	</div>
+
+    <div class="h-popup">
+        <h4>PHƯƠNG THỨC THANH TOÁN</h4>
+    </div>
+	<div class="modal-body">
+		<form #checkoutForm="ngForm" (ngSubmit)="onSubmitCheckout(checkoutForm)">
+            <!-- <div class="form-group">
+                <input 
+                    ngModel
+                    name="fullname"
+                    type="text" 
+                    class="form-control" 
+                    id="fullname" 
+                    aria-describedby="fullname" 
+                    placeholder="Họ tên"
+                    required
+                    #fullname="ngModel"
+                >
+                <small *ngIf="!fullname.valid && fullname.touched" id="username" class="form-text text-muted">Vui lòng nhập họ tên!</small>
+            </div> -->
+
+            
+            <div class="form-check">
+                <input 
+                    class="form-check-input" 
+                    type="radio" 
+                    name="payment1" 
+                    id="payment1"
+                    [(ngModel)]="selectedVNPay" 
+                    [value]="false"
+                />
+                <label class="form-check-label" for="payment1"> Thanh toán tại quầy </label>
+            </div>
+            
+            <div class="form-check">
+                <input 
+                    class="form-check-input" 
+                    type="radio" 
+                    name="payment2" 
+                    id="payment2" 
+                    checked
+                    [(ngModel)]="selectedVNPay" 
+                    [value]="true"
+                />
+                <label class="form-check-label" for="payment2"> Thanh toán qua VNPAY </label>
+            </div>
+            <div class="modal-footer-res">
+                <button type="button" class="btn btn-outline-dark" (click)="handleCheckout()">Xác nhận</button>
+            </div>
+           
+
+        </form>
+	</div>
+	
+</ng-template>

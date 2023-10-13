@@ -1,0 +1,56 @@
+<div>
+
+    <table class="table-bordered table-price-inclusion">
+        <thead>
+            <tr>
+                <th style="width: 281px;">Loại phòng</th>
+                <th class="text-center" style="width: 268px;">Dịch vụ bao gồm</th>
+                <th class="text-center" style="width: 140px;">Giá từ</th>
+                <th class="text-center" style="width: 155px;">Đặt giữ chỗ</th>
+            </tr>
+        </thead>
+        <tbody class="tableCombo">
+            <tr *ngFor="let room of rooms">
+                <th style="font-weight: normal;">
+                    <span class="show-acc">{{ room.name }}</span>
+                    <div class="acc-detailCom">
+                        <div class="item img" style="background-image: url({{room?.url}});">
+                        </div>
+                        
+                    </div>
+                </th>
+                <th style="font-weight: normal;">
+                    <div class="acc-detailCom" *ngFor="let service of room.services">
+                        <img src="../../../assets/images/check-mark.png" alt="image" style="float: left; width: 15px; height: 15px; margin-right: 5px;">
+                        {{ service }}
+                        <br>
+                        <!-- <img src="../../../assets/images/check-mark.png" alt="image" style="float: left; width: 15px; height: 15px; margin-right: 5px;">
+                        Miễn phí bữa sáng tại nhà hàng cao cấp view biển
+                        <br>
+                        <img src="../../../assets/images/check-mark.png" alt="image" style="float: left; width: 15px; height: 15px; margin-right: 5px;">
+                        Miễn phí trà, cà phê và nước uống theo tiêu chuẩn
+                        <br>
+                        <img src="../../../assets/images/check-mark.png" alt="image" style="float: left; width: 15px; height: 15px; margin-right: 5px;">
+                        Miễn phí bơi lội và tiện ích bể bơi tại Bể bơi Vỏ Sò hướng biển
+                        <br>
+                        <img src="../../../assets/images/check-mark.png" alt="image" style="float: left; width: 15px; height: 15px; margin-right: 5px;">
+                        Miễn phí hoạt động thể thao bãi biển: bóng đá, bóng chuyền,...
+                        <br> -->
+                       
+                    </div>
+                </th>
+                <th style="text-align: center !important; font-weight: normal;">
+                    <span class="show-acc">{{ room.price | currency:'VND':'symbol':'1.0-0'   }} / phòng</span>
+                </th>
+                <th style="text-align: center !important; font-weight: normal;">
+                    <span class="booktour">
+                        <a [routerLink]="['/contact-form', room.hotel_id]" routerLinkActive="active">Liên hệ</a>
+                    </span>
+                </th>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+

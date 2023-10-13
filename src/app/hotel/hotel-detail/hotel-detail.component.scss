@@ -1,0 +1,758 @@
+@import '../../../assets/scss/bootstrap/bootstrap';
+@import '../../../assets/scss/bootstrap/variables';
+
+$font-primary: 'Poppins',Arial, sans-serif;
+$font-secondary: 'Cormorant Garamond',Georgia, serif;
+
+$white: #fff;
+$black: #000000;
+$darken: #232931;
+
+$primary: #e2c0bb;
+$secondary: #b2bbc9;
+
+.bg-light {
+	background: #f8f9fa!important;
+}
+
+.bg-primary{
+	background: $primary;
+}
+.bg-darken{
+	background: $darken;
+}
+
+@font-face {
+	font-family: Montserrat-Regular;
+	src: url("../../../assets/fonts/Montserrat/static/Montserrat-Regular.ttf");
+}
+
+@font-face {
+	font-family: Montserrat-Bold;
+	src: url("../../../assets/fonts/Montserrat/static/Montserrat-Bold.ttf");
+}
+
+
+// @mixin border-radius($radius) {
+//     -webkit-border-radius: $radius;
+//        -moz-border-radius: $radius;
+//         -ms-border-radius: $radius;
+//             border-radius: $radius;
+//   }
+  
+//   @mixin transition($transition) {
+//       -moz-transition:    all $transition ease;
+//       -o-transition:      all $transition ease;
+//       -webkit-transition: all $transition ease;
+//       -ms-transition: 		all $transition ease;
+//       transition:         all $transition ease;
+//   }
+
+
+.img,
+.blog-img,
+.user-img{
+	  background-size: cover;
+	  background-repeat: no-repeat;
+	  background-position: center center;
+}
+
+a {
+	transition: .3s all ease;
+	color: $primary;
+	&:hover, &:focus {
+		text-decoration: none;
+		color: $primary;
+		outline: none !important;
+	}
+}
+h1, h2, h3, h4, h5,
+.h1, .h2, .h3, .h4, .h5 {
+	line-height: 1.5;
+	color: rgba(0,0,0,.9);
+	font-weight: 400;
+	font-family: $font-primary;
+}
+
+.bg-primary{
+	background: $primary;
+}
+
+.c_right {
+	padding-top: 7px;
+	margin-left: -9px;
+}
+
+.ftco-section {
+	padding: 7em 0;
+	position: relative;
+	@include media-breakpoint-down(sm){
+		padding: 6em 0;
+	}
+}
+
+.ftco-no-pt{
+	padding-top: 0 !important;
+}
+.ftco-no-pb{
+	padding-bottom: 0 !important;
+}
+
+.ftco-bg-dark {
+	background: #3c312e;
+}
+
+.container {
+    // h2 {
+    //     font-family: Muli-Regular;
+    // }
+}
+
+.hero-wrap{
+	width: 100%;
+	height: 700px;
+	position: inherit;
+	background-size: cover;
+	background-repeat: no-repeat;
+	// background-position: center center;
+	@include media-breakpoint-down(md){
+	}
+	.slider-text{
+		height: 700px;
+	}
+	.overlay{
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		content: '';
+		opacity: 0;
+		background: $black;
+		// @include gradient-background();
+	}
+	&.hero-wrap-2{
+		height: 400px;
+		position: relative;
+		background-position: top center;
+		.overlay{
+			width: 100%;
+			opacity: .3;
+			background: $white;
+		}
+		.slider-text{
+			height: 400px;
+		}
+	}
+}
+
+.slider-text{
+	.icon-video{
+		padding: 10px;
+		border: 2px solid rgba(255,255,255,.4);
+		@include border-radius(4px);
+		span{
+			color: $white;
+		}
+		span.play{
+		}
+		span.watch{
+			font-family: $font-primary;
+			font-size: 16px;
+			text-transform: uppercase;
+		}
+	}
+	h1 {
+		font-family: $font-secondary;
+		font-size: 48px;
+		color: $white;
+		line-height: 1.2;
+		font-weight: 400;
+		// text-transform: uppercase;
+		@include media-breakpoint-down(md) {
+			font-size: 40px;
+		}
+	}
+	p {
+		font-family: $font-primary;
+		font-size: 20px;
+		line-height: 1.5;
+		font-weight: 300;
+		color: rgba(255,255,255,.8);
+		strong{
+			font-weight: 700;
+			a{
+				color: $black;
+			}
+		}
+	}
+	.breadcrumbs{
+		font-size: 16px;
+		margin-bottom: 20px;
+		z-index: 99;
+		font-weight: 400;
+		span{
+			color: rgba(0,0,0,.8);
+			i{
+				color: rgba(0,0,0,.8);
+			}
+			a{
+				color: rgba(0,0,0,1);
+				&:hover, &:focus{
+					color: $primary;
+					i{
+						color: $primary;
+					}
+				}
+			}
+		}
+	}
+	.bread{
+        //font-family: Muli-Bold;
+		font-weight: 600;
+		color: $black;
+        font-size: 25px;
+        line-height: 35px;
+		font-family: Montserrat-Bold;
+        letter-spacing: 2.5;
+	}
+}
+
+.ftco-section {
+	padding: 7em 0;
+	position: relative;
+	@include media-breakpoint-down(sm){
+		padding: 6em 0;
+	}
+}
+
+//BUTTON
+.btn {
+	cursor: pointer;
+	@include border-radius(3px);
+	// box-shadow: none!important;
+	-webkit-box-shadow: 0px 24px 36px -11px rgba(0,0,0,0.09);
+	-moz-box-shadow: 0px 24px 36px -11px rgba(0,0,0,0.09);
+	box-shadow: 0px 24px 36px -11px rgba(0,0,0,0.09);
+	&:hover, &:active, &:focus {
+		outline: none;
+	}
+	&.btn-primary {
+		background: $primary;
+		border: 1px solid $primary !important;
+		color: $white !important;
+		&:hover {
+			border: 1px solid $primary;
+			background: $primary;
+			color :$primary;
+		}
+		&.btn-outline-primary {
+			border: 2px solid $primary !important;
+			background: transparent !important;
+			color :$primary !important;
+			&:hover {
+				border: 2px solid transparent !important;
+				background: $primary !important;
+				color :$white !important;
+			}
+		}
+	}
+	&.btn-secondary {
+		background: $secondary !important;
+		border: 1px solid $secondary !important;
+		color: $white !important;
+		&:hover {
+			border: 1px solid $secondary !important;
+			background: transparent !important;
+			color :$secondary !important;
+		}
+		&.btn-outline-primary {
+			border: 1px solid $secondary;
+			background: transparent;
+			color :$secondary;
+			&:hover {
+				border: 1px solid transparent;
+				background: $secondary;
+				color :$white;
+			}
+		}
+	}
+	&.btn-white {
+		background: $white !important;
+		border: 1px solid $white !important;
+		color: $black !important;
+		&:hover {
+			border: 1px solid $black;
+			background: $white !important;
+			color :$white;
+		}
+		&.btn-outline-primary {
+			border: 1px solid $primary;
+			background: transparent;
+			color :$primary;
+			&:hover {
+				border: 1px solid transparent;
+				background: $primary;
+				color :$white;
+			}
+		}
+	}
+	&.btn-black {
+		background: $black !important;
+		border: 1px solid $black !important;
+		color: $white !important;
+		&:hover {
+			border: 1px solid $white !important;
+			background: $white !important;
+			color :$black !important;
+		}
+		&.btn-outline-primary {
+			border: 1px solid $primary;
+			background: transparent;
+			color :$primary;
+			&:hover {
+				border: 1px solid transparent;
+				background: $primary;
+				color :$white;
+			}
+		}
+	}
+}
+
+.btn-space {
+	margin: 2px;
+}
+
+//HOTEL ROOM
+//************************Chuyển
+.room-wrap{
+	.img{
+		display: block;
+		width: 100%;
+		@include border-radius(4px);
+		@include media-breakpoint-down(sm){
+			height: 300px;
+		}
+	}
+
+    .content-wrap {
+        margin: 60px 0;
+    }
+
+    .vnt-hotline {
+        mat-icon {
+            font-size: 15px;
+            padding-top: 11px;
+
+        }
+        span {
+            color: #ed0080;
+        }
+    }
+
+    .vnt-attr {
+        padding: 10px 10px;
+        //margin: 90px 0;
+        //padding: 15px 30px;
+        background: #f3f3f3;
+        //margin-bottom: 20px;
+        .v2 {
+            //display: flex;
+            margin-bottom: 10px;
+        }
+
+        .v1 {
+            background-image: url("../../../assets/images/hotel-1.svg");
+            background-repeat: no-repeat;
+            background-position: top 5px left;
+            background-size: 14px;
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        .v4 {
+            background-image: url("../../../assets/images/i-4.svg");
+            background-repeat: no-repeat;
+            background-position: top 5px left;
+            background-size: 14px;
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        .link-contact {
+            display: block;
+            text-align: center;
+            background: #ed0080;
+            background: linear-gradient(180deg,#ed0080 0,#be3b98 100%);
+            color: #fff;
+            text-transform: uppercase;
+            padding: 9px 10px;
+            margin-bottom: 15px;
+        }
+
+
+        ul {
+            mat-icon {
+                font-size: 15px;
+                margin-right: -7px;
+            }
+            li {
+                list-style: none;
+                
+
+                .at {
+                    float: left;
+                    width: 100px;
+                }
+
+
+                .facilities {
+                    .facihotel11 {
+                        background-image: url("../../../assets/images/breakfast-time.svg");
+                        background-repeat: no-repeat;
+                        background-position: top 5px left;
+                        background-size: 14px;
+                        padding-left: 20px;
+                        //margin-left: 10px;
+                    }
+
+
+                    .facihotel16 {
+                        background-image: url("../../../assets/images/tub-with-two-holes.svg");
+                        background-repeat: no-repeat;
+                        background-position: top 5px left;
+                        background-size: 14px;
+                        padding-left: 20px;
+                        //margin-left: 10px;
+                    }
+
+                    .facihotel25 {
+                        background-image: url("../../../assets/images/signal-bars.svg");
+                        background-repeat: no-repeat;
+                        background-position: top 5px left;
+                        background-size: 14px;
+                        padding-left: 20px;
+                        //margin-left: 10px;
+                    }
+
+                    .facihotel34 {
+                        background-image: url("../../../assets/images/sedan-car-model.svg");
+                        background-repeat: no-repeat;
+                        background-position: top 5px left;
+                        background-size: 14px;
+                        padding-left: 20px;
+                        //margin-left: 10px;
+                    }
+                }
+            }
+        }
+    }
+
+	.text{
+
+        
+
+		h3{
+			font-family: $font-secondary;
+			font-size: 1.75rem;
+			a{
+				color: $black;
+			}
+		}
+		p {
+			font-family: $font-primary;
+			line-height: 1.8;
+			font-size: 16px;
+		}
+		.pos{
+			color: $black;
+			span{
+				color: $primary;
+			}
+		}
+	}
+	&.room-wrap-thumb{
+		a.thumb{
+			width: 100%;
+			h3{
+				font-size: 20px;
+				line-height: 1;
+			}
+			.img, .text{
+				width: 100%;
+				@include media-breakpoint-down(md){
+					height: inherit;
+				}
+			}
+		}
+	}
+}
+
+.tour-wrap{
+	@include media-breakpoint-down(xl){
+		//overflow-x: scroll;
+        //overflow-y: scroll;
+	}
+}
+
+.tour-wrap{
+	ul {
+		list-style: none;
+		padding: 0;
+	}
+	.img{
+		display: block;
+		width: 100%;
+		@include border-radius(4px);
+		@include media-breakpoint-down(sm){
+			height: 300px;
+		}
+	}
+	.text{
+		border: solid 1px rgba(0,0,0,.15);
+		padding: 15px;
+		//margin: 20px;
+    	//margin-bottom: 25px;
+		margin-top: 28px;
+		margin-bottom: 28px;
+		@include media-breakpoint-down(sm){
+			border: none;
+		}
+		.name {
+			text-decoration: none;
+			line-height: 24px;
+			// color: #ed0080;
+			// font-weight: 700;
+			padding-bottom: 5px;
+			margin-bottom: 10px;
+			border-bottom: solid 1px rgba(0,0,0,.15);
+			
+		}
+
+		.attr {
+			li {
+				margin: 0;
+				padding: 0;
+				padding-bottom: 10px;
+				margin-bottom: 10px;
+				display: inline-table;
+				width: 100%;
+				border-bottom: solid 1px rgba(0,0,0,.15);
+
+				.at {
+					color: #333;
+					width: 100px;
+					float: left;
+					font-weight: 700;
+				}
+
+				.as {
+					color: #333333;
+					overflow: hidden;
+				}
+			}
+			.mybutton {
+				width: 100%;
+    			height: 40px;
+				border-radius: 5px;
+				transition: all .3s linear;
+				text-transform: uppercase;
+				background-color: $primary;
+				font-weight: 700;
+				color: #fff;
+				border: none;
+
+				&:hover {
+					cursor: pointer;
+					background: #ed0080;
+				}
+			}
+			
+		}
+
+		h3{
+			//color: #ed0080;
+			font-family: $font-primary;
+			font-size: 20px;
+			//margin-top: -20px;
+			
+			a{
+				color: #ed0080;
+				text-decoration: none;
+			}
+		}
+		.pos{
+			color: $black;
+			span{
+				color: $primary;
+			}
+		}
+	}
+
+}
+
+.tab-list {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+
+	ul {
+		display: flex;
+		li {
+			padding: 0 10px;
+			// color: red;
+			//font-weight: bold;
+
+			a {
+				//color: #232931;
+				font-family: Montserrat-Regular;
+				display: block;
+				padding: 15px 0;
+				font-weight: 700;
+				text-transform: uppercase;
+				position: relative;
+
+				&:hover {
+					cursor: pointer;
+				}
+
+			}
+		}
+	}
+}
+
+// .title-box {
+// 	background: #1a3863;
+// 	padding: 10px;
+// 	//margin: 15px 0;
+// 	margin-bottom: 15px;
+
+// 	h5 {
+// 		font-family: Montserrat-Bold;
+// 		color: #fff;
+// 		margin-bottom: 0;
+// 		text-transform: uppercase;
+// 	}
+// }
+
+// .earlyBird {
+// 	background: #fff;
+// 	font-family: Montserrat-Regular;
+// 	padding: 15px;
+//     border: 1px solid #ddd;
+//     margin-top: 0;
+//     line-height: 2;
+// 	font-size: 16px!important;
+
+// 	max-height: 300px; /* Đặt giới hạn độ cao tại đây */
+//   	overflow-y: auto;
+
+// 	// @include media-breakpoint-down(xl){
+// 	// 	//overflow-x: scroll;
+//     //     overflow-y: scroll;
+// 	// }
+// }
+
+//HOTEL SINGLE
+.rate{
+ 	span{
+ 		i{
+ 			color: $primary;
+ 		}
+ 	}
+}
+
+.comment-list {
+	padding: 0;
+	margin: 0;
+	.children {
+		padding: 50px 0 0 40px;
+		margin: 0;
+		float: left;
+		width: 100%;
+	}
+	li {
+		padding: 0;
+		margin: 0 0 30px 0;
+		float: left;
+		width: 100%;
+		clear: both;
+		list-style: none;
+		.vcard {
+			width: 80px;
+			float: left;
+			img {
+				width: 50px;
+				border-radius: 50%;
+			}
+		}
+		.comment-body {
+			float: right;
+			width: calc(100% - 80px);
+			h3 {
+				font-size: 20px;
+			}
+			.meta {
+				text-transform: uppercase;
+				font-size: 13px;
+				letter-spacing: .1em;
+				color: #ccc;
+			}
+			.reply {
+				padding: 5px 10px;
+				background: lighten($black, 90%);
+				color: $black;
+				text-transform: uppercase;
+				font-size: 11px;
+				letter-spacing: .1em;
+				font-weight: 400;
+				border-radius: 4px;
+				&:hover {
+					color: $white;
+					background: lighten($black, 0%);
+				}
+			}
+		}
+	}
+}
+
+//ABOUT
+.about-author{
+	img{
+	}
+	.desc{
+		h3{
+			font-size: 24px;
+		}
+	}
+	.bio{
+
+	}
+}
+
+.comment-form-wrap {
+	clear: both;
+}
+
+.active-link {
+	
+	a {
+		//color: #232931;
+		color: #3172cd;
+		//color: red;
+		font-size: 15px;
+		font-family: Montserrat-Bold;
+		display: block;
+		padding: 15px 0;
+		font-weight: 700;
+		text-transform: uppercase;
+		position: relative;
+
+		&:hover {
+			cursor: pointer;
+		}
+
+	}
+}
+
+

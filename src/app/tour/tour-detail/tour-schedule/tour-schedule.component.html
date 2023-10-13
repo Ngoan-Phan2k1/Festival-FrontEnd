@@ -1,0 +1,16 @@
+<div class="TourList" *ngFor="let schedule of schedules">
+    <div class="TourDates">
+        <span>
+            Lịch trình ngày {{ schedule?.day }}
+        </span>
+    </div>
+    <div class="TourInfo">
+        <strong *ngIf="schedule?.morning">Sáng:</strong> {{ schedule?.morning}} <br>
+        <strong *ngIf="schedule?.evening">Chiều:</strong> {{ schedule?.evening}} <br>
+        <strong *ngIf="schedule?.night">Tối:</strong> {{ schedule?.night}}
+        <div style="text-align: justify;">&nbsp;</div>
+        <div style="text-align: center;" *ngIf="schedule.url !== null">
+            <img [src]="schedule.url" alt="image">
+        </div>
+    </div>
+</div>

@@ -18,11 +18,14 @@
                     <div class="col-md-6 col-lg-4 ftco-animate" *ngFor="let tour of tours">
                         <div class="project">
                             <div class="img">
-                                <div class="vr"><span>Sale</span></div>
-                                <a [routerLink]="['/tour', tour.id]"><img src="../../assets/images/destination-1.jpg" class="img-fluid" alt="Image load fail"></a>
+                                <!-- <div class="vr"><span>Sale</span></div> -->
+                                <a [routerLink]="['/tour', tour.id]"><img [src]="tour.url" class="img-fluid" alt="Image load fail"></a>
                             </div>
                             <div class="text">
-                                <h4 class="price"><span class="old-price mr-2">{{ formatPrice(4000000)}}</span>{{ formatPrice ( tour.price ) }}</h4>
+                                <h4 class="price"><span class="old-price mr-2">
+                                    <!-- {{ formatPrice(4000000)}} -->
+                                    </span>{{ tour.price | currency:'VND':'symbol':'1.0-0' }}
+                                </h4>
                                 
                                 <div class="mda-img-box-wrap">
                                     <span>{{tour.description}}</span>
@@ -224,12 +227,12 @@
             </div> <!-- end -->
             <div class="col-lg-3 p-4 bg-light">
                 <div class="search-wrap-1 ftco-animate">
-                    <h2 class="mb-3">Find Places</h2>
+                    <h2 class="mb-3">Điểm đến</h2>
                     <form action="#" class="search-property-1">
                         <div class="row">
                             <div class="col-lg-12 align-items-end mb-3">
                                 <div class="form-group">
-                                    <label for="#">Destination</label>
+                                    <label for="#">Lễ hội</label>
                                     <div class="form-field">
                                         <div class="icon"><span class="ion-ios-search"></span></div>
                                         <input type="text" class="form-control" placeholder="Search place">
@@ -238,7 +241,7 @@
                             </div>
                             <div class="col-lg-12 align-items-end mb-3">
                                 <div class="form-group">
-                                    <label for="#">Check-in date</label>
+                                    <label for="#">Ngày đi</label>
                                     <div class="form-field">
                                         <div class="icon"><span class="ion-ios-calendar"></span></div>
                                         <input type="text" class="form-control checkin_date" placeholder="Check In Date">
@@ -247,7 +250,7 @@
                             </div>
                             <div class="col-lg-12 align-items-end mb-3">
                                 <div class="form-group">
-                                    <label for="#">Check-out date</label>
+                                    <label for="#">Ngày về</label>
                                     <div class="form-field">
                                         <div class="icon"><span class="ion-ios-calendar"></span></div>
                                         <input type="text" class="form-control checkout_date" placeholder="Check Out Date">
@@ -256,11 +259,11 @@
                             </div>
                             <div class="col-lg-12 align-items-end mb-3">
                                 <div class="form-group">
-                                    <label for="#">Price Limit</label>
+                                    <label for="#">Giá</label>
                                     <div class="form-field">
                                         <div class="select-wrap">
                                             <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                            <select name="" id="" class="form-control">
+                                            <!-- <select name="" id="" class="form-control">
                                                 <option value="">$5,000</option>
                                                 <option value="">$10,000</option>
                                                 <option value="">$50,000</option>
@@ -275,7 +278,7 @@
                                                 <option value="">$900,000</option>
                                                 <option value="">$1,000,000</option>
                                                 <option value="">$2,000,000</option>
-                                            </select>
+                                            </select> -->
                                         </div>
                                     </div>
                                 </div>

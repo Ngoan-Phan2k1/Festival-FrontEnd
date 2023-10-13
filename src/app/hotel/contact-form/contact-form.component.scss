@@ -1,0 +1,174 @@
+@import '../../../assets/scss/bootstrap/bootstrap';
+@import '../../../assets/scss/bootstrap/variables';
+
+@font-face {
+	font-family: Montserrat-Regular;
+	src: url("../../../assets/fonts/Montserrat/static/Montserrat-Regular.ttf");
+}
+
+@font-face {
+	font-family: Montserrat-Bold;
+	src: url("../../../assets/fonts/Montserrat/static/Montserrat-Bold.ttf");
+}
+
+
+    .button-send {
+        button {
+            font-family: Montserrat-Bold;
+            font-size: 16px;
+            padding: 7px 5px;
+            border-radius: 5px;
+            font-weight: 700;
+            text-align: center;
+    
+            display: inline-block;
+            background: #1a3863;
+            text-decoration: none;
+            color: #fff !important;
+            //padding: 1px 16px;
+            margin-left: 10px;
+            min-width: 75px;
+            font-weight: 500;
+    
+            &:hover {
+                cursor: pointer;
+            }
+        }
+        a {
+            // font-family: Montserrat-Bold;
+            // font-size: 16px;
+            // padding: 7px 5px;
+            // border-radius: 5px;
+            // font-weight: 700;
+            // text-align: center;
+    
+            // display: inline-block;
+            // background: #1a3863;
+            // text-decoration: none;
+            // color: #fff !important;
+            // //padding: 1px 16px;
+            // margin-left: 10px;
+            // min-width: 75px;
+            // font-weight: 500;
+    
+            // &:hover {
+            //     cursor: pointer;
+            // }
+        }
+    }
+
+
+
+.wrapForm {
+    background: url(../../../assets/images/bg-contact.jpg) no-repeat center top;
+    background-size: contain;
+    width: 100%;
+    //padding-top: 30px;
+    margin: 0;
+    //padding: 0;
+
+    .wrapper {
+        max-width: 1200px;
+        padding: 0 15px;
+        margin: 0 auto;
+
+        .vnt-form {
+            margin: 85px auto;
+            border: 1px solid #d2d6d9;
+
+        }
+
+        .mda-contact {
+            padding: 30px 50px;
+            background: rgba(255,255,255,.9);
+        }
+
+        .tourName {
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 22px;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #ed0080;
+        }
+
+        .t1 {
+            text-align: center;
+            font-size: 35px;
+            line-height: 45px;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .beWrap {
+            margin-bottom: 20px;
+
+            .be {
+                text-align: center;
+                span {
+                    padding-left: 25px;
+                    position: relative;
+                }
+            }
+        }
+
+        .phoneWrap {
+            max-width: 280px;
+            border: solid 1px #ed0080;
+            border-radius: 5px;
+            padding: 10px;
+            padding-left: 50px;
+            position: relative;
+            margin: 0 auto;
+            margin-bottom: 35px;
+
+            .hotline {
+                font-size: 30px;
+                line-height: 40px;
+                font-weight: 700;
+
+                a {
+                    color: #333;
+                    list-style: none;
+                    text-decoration: none;
+                }
+            }
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 15px;
+
+
+            .txt {
+                span{
+                    color: #ed0080;
+                }
+            }
+
+            label {
+                display: inline-block;
+                max-width: 100%;
+                margin-bottom: 5px;
+                font-weight: 700;
+                span{
+                    color: #ed0080;
+                };
+            }
+
+            select {
+                border-radius: 0;
+            }
+
+            input {
+                width: 100%;
+                height: 40px;
+                border: solid 1px rgba(0,0,0,.15);
+                padding-left: 10px;
+                color: #2a2a2a;
+            }
+        }
+    }
+}
