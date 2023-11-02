@@ -1,0 +1,58 @@
+
+@font-face {
+	font-family: Montserrat-Regular;
+	src: url("../../../../assets/fonts/Montserrat/static/Montserrat-Regular.ttf");
+}
+
+@font-face {
+	font-family: Montserrat-Bold;
+	src: url("../../../../assets/fonts/Montserrat/static/Montserrat-Bold.ttf");
+}
+
+
+.TourList {
+    font-size: 14px;
+    line-height: 1.7;
+    background: #fff;
+    border: 1px solid #d8d8d8;
+    border-radius: 4px;
+    margin-bottom: 10px;
+
+    .TourDates {
+        font-family: Montserrat-Bold;
+        //background: #f7f7f7;
+        background: #1a3863;;
+        padding: 10px 20px;
+        font-size: 18px;
+        cursor: pointer;
+        display: flex;
+        margin: 0 !important;
+        //color: #003580;
+        color: #fff;;
+        justify-content: space-between;
+
+        span {
+            display: inline-block;
+        }
+    }
+
+    .TourInfo {
+
+        font-family: Montserrat-Regular;
+        display: block;
+        padding: 20px;
+        font-size: 16px!important;
+
+        strong {
+            font-weight: bolder;
+        }
+
+        img {
+            width: 700px;
+            max-width: 100%;
+            height: auto!important;
+            vertical-align: middle;
+            border: 0;
+        }
+    }
+}

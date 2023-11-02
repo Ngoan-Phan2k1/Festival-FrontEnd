@@ -4,6 +4,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
+    "skipLibCheck": true,
     "strictNullChecks":false,
     "noImplicitAny": false,
     "forceConsistentCasingInFileNames": true,

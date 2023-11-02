@@ -20,6 +20,16 @@ $darken: #232931;
 $primary: #e2c0bb;
 $secondary: #b2bbc9;
 
+@font-face {
+	font-family: Montserrat-Regular;
+	src: url("../../assets/fonts/Montserrat/static/Montserrat-Regular.ttf");
+}
+
+@font-face {
+	font-family: Montserrat-Bold;
+	src: url("../../assets/fonts/Montserrat/static/Montserrat-Bold.ttf");
+}
+
 @mixin border-radius($radius) {
     -webkit-border-radius: $radius;
        -moz-border-radius: $radius;
@@ -188,6 +198,11 @@ $secondary: #b2bbc9;
 				}
 			}
 		}
+
+		a {
+			color: #16181b !important; 
+			text-decoration: none; 
+		}
 	}
 	.navbar-toggler {
 		border: none;
@@ -314,9 +329,17 @@ $secondary: #b2bbc9;
     // padding-left: 20px;
     // padding-right: 20px;
 
-	margin-top: -4px;
+	margin-top: -3px;
 	width: 140px;
 	padding-left: 10px;
+	font-size: 16px;
+
+	button {
+		border: none;
+		outline: none;
+		background: transparent;
+	}
+
 
 	.myicon {
 		display: flex;
@@ -329,9 +352,9 @@ $secondary: #b2bbc9;
 		}
 	}
 
-
 	button {
 		padding: 5px;
+		
 	}
 }
 
@@ -419,6 +442,55 @@ $secondary: #b2bbc9;
 
 input.ng-invalid.ng-touched {
 	border: 1px solid red;
+}
+
+.btn-close {
+	outline: none;
+	border: none;
+
+	&:focus {
+		outline: none;
+		border: none;
+		box-shadow: none;
+	}
+}
+
+.modal-header {
+	border-bottom: none;
+}
+
+.sticky-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    /* Các thuộc tính CSS khác mà bạn muốn áp dụng khi cố định thanh navbar */
+}
+
+.container {
+	ul {
+		margin: 0 auto;
+		font-family: Montserrat-Bold;
+	}
+}
+
+.font {
+	font-family: Montserrat-Bold;
+}
+
+.greeting-text {
+    white-space: nowrap; /* Ngăn nội dung xuống dòng */
+    overflow: hidden;   /* Ẩn nội dung tràn ra ngoài */
+    text-overflow: ellipsis; /* Hiển thị dấu ba chấm (...) khi nội dung quá dài */
+}
+
+.link {
+	a {
+		text-decoration: none;
+		list-style: none !important;
+		color: #000000 !important;
+	}
 }
 
 

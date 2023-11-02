@@ -1,0 +1,73 @@
+<section class="ftco-section">
+    <div class="vw-user-setting-container">
+        <div class="d-flex flex-column flex-lg-row">
+            <div class="col-lg-30">
+                <div class="nav-user-profile">
+                    <div class="box-info-container">
+                        <div class="info">
+                            <span class="avatar-upload">
+                                <div class="ant-upload-select-picture-card">
+                                    <span class="ant-upload">
+                                        <div class="avatar-image-wrapper" >
+                                            <img *ngIf="!url" class="avatar" src="../../assets/images/account.png">
+                                            <img *ngIf="url" class="avatar" [src]="url">
+                                        </div>
+                                    </span>
+                                </div>
+                            </span>
+                            <span class="vw-link" (click)="fileInput.click()">Thay đổi ảnh</span>
+                            <input type="file" #fileInput (change)="onImageSelected($event)" style="display: none;">
+                            <div class="user-info">
+                                <div class="vw-fullname">
+                                    PHAN VAN THANH NGOAN
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="nav-content">
+                        
+                        <p [routerLink]="['/account/user-info']" routerLinkActive="active" class="vw-menu-user-item">
+                            <img src="../../assets/images/profile.svg">
+                            Thông tin chi tiết
+                        </p>
+                             
+                        
+                        <p [routerLink]="['/account/order']" routerLinkActive="active" class="vw-menu-user-item">
+                            <img src="../../assets/images/order.svg">
+                            Tour đã book
+                        </p>
+                            
+                            
+                        <div>
+                            <p class="vw-menu-user-item" (click)="logout()">
+                                <img src="../../assets/images/logout.svg">
+                                Đăng xuất
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-70">
+                <router-outlet></router-outlet>
+                <!-- <div class="vw-my-order-page">
+                    <div class="vw-my-order-page-title">
+                        Tour đã đặt
+                    </div>
+                    <div class="d-flex flex-column mt-4">
+                        <div class="d-flex align-items-center justify-content-center flex-column">
+                            <img src="../../assets/images/empty-page.png">
+                            <p class="g-font-size-16 font-weight-bold g-color-gray-light-v2">Hiện tại bạn chưa có giao dịch nào</p>
+                        </div>
+                        <div class="text-center mt-4">
+                            <a href="" class="now-button">
+                                Đặt tour ngay
+                            </a>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,354 @@
+<section class="ftco-section">
+    <div class="wrapCont">
+        <div class="wrapper">
+            <div class="mda-content">
+                <div class="mda-contents">
+                    <div class="row">
+                        <div class="mda-info">
+                            <div class="mda-info-img">
+                                <img [src]="tour?.url" alt="img">
+                            </div>
+                            <div class="mda-info-caption">
+                                <h2>
+                                    <a>
+                                        {{ tour?.name }}
+                                    </a>
+                                </h2>
+                                <div class="mda-info-list">
+                                    <div class="mda-row">
+                                        <span class="be">Thời gian:</span>
+                                        <span style="font-weight: bold;">{{ tour?.description }}</span>
+                                    </div>
+                                    <div class="mda-row">
+                                        <span class="be">Giá:</span>
+                                        <span style="font-weight: bold;">{{ tour?.priceAdult | currency:'VND':'symbol':'1.0-0' }}</span>
+                                    </div>
+                                    <div class="mda-row">
+                                        <span class="be">Ngày khởi hành:</span>
+                                        <span style="font-weight: bold;">{{ tour?.fromDate }}</span>
+                                    </div>
+                                    <div class="mda-row">
+                                        <span class="be">Ngày về:</span>
+                                        <span style="font-weight: bold;">{{ tour?.toDate }}</span>
+                                    </div>
+                                    <div class="mda-row">
+                                        <span class="be">Nơi khởi hành:</span>
+                                        <span style="font-weight: bold;">{{ tour?.fromWhere }}</span>
+                                    </div>
+                                    <div class="mda-row">
+                                        <span class="be">Nơi đến:</span>
+                                        <span style="font-weight: bold;">{{ tour?.toWhere }}</span>
+                                    </div>
+                                    <div class="mda-row">
+                                        <span class="be">Số chỗ còn nhận:</span>
+                                        <span style="font-weight: bold;">{{ tour?.canbook }}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="MdaPrice" style="margin-bottom: 50px;">
+                            <div class="mda-tilte-3">
+                                <span class="mda-tilte-name">
+                                    Bảng giá tour chi tiết
+                                </span>
+                            </div>
+                            <div class="clearfix">
+                                <div class="table-responsive mCustomScrollbar _mCS_1 mCS_no_scrollbar">
+                                    <div class="mCustomScrollBox" tabindex="0">
+                                        <div
+                                            class="table-wrap"
+                                            style="
+                                                position: relative;
+                                                top: 0px;
+                                                left: 0px;
+                                                width: 100%;
+                                            "
+                                            dir="ltr"
+                                        >
+                                            <table class="mda-table">
+                                                <tbody>
+                                                    <tr class="first">
+                                                        <td>
+                                                            <span>Loại giá\Độ tuổi</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>Người lớn(Trên 11 tuổi)</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>Trẻ em(5 - 11 tuổi)</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>Trẻ nhỏ(2 - 5 tuổi)</span>
+                                                        </td>
+                                                        <!-- <td>
+                                                            <span>Sơ sinh( < 2 tuổi)</span>
+                                                        </td> -->
+                                                    </tr>
+                                                    <tr style="background-color: #fbfafa;">
+                                                        <td>
+                                                            <span>Giá</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>{{ tour?.priceAdult | currency:'VND':'symbol':'1.0-0' }}</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>{{ tour?.priceChild | currency:'VND':'symbol':'1.0-0' }}</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>{{ tour?.priceBaby | currency:'VND':'symbol':'1.0-0' }}</span>
+                                                        </td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+
+                                            
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="MdaPrice">
+                            <div class="mda-tilte-3">
+                                <span class="mda-tilte-name">
+                                    Bảng giá khách sạn theo tour
+                                </span>
+                            </div>
+                            <div class="clearfix">
+                                <div class="table-responsive mCustomScrollbar _mCS_1 mCS_no_scrollbar">
+                                    <div class="mCustomScrollBox" tabindex="0">
+                                        <div
+                                            class="table-wrap"
+                                            style="
+                                                position: relative;
+                                                top: 0px;
+                                                left: 0px;
+                                                width: 100%;
+                                            "
+                                            dir="ltr"
+                                        >
+                                            <div class="hotel-table">
+                                                <mat-form-field>
+                                                    <mat-label>Bộ lọc</mat-label>
+                                                    <input matInput placeholder="Tìm kiếm" (keyup)="Filterchange($event)"/>
+                                                </mat-form-field>
+
+                                                <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
+
+                                                    <ng-container matColumnDef="hotel">
+                                                      <th class="mth" style="width: 281px;" mat-header-cell *matHeaderCellDef> Khách sạn </th>
+                                                      <td style="font-weight: normal;" mat-cell *matCellDef="let element"> {{element?.hotel}} </td>
+                                                    </ng-container>
+                                                  
+                                                    <!-- Name Column -->
+                                                    <ng-container matColumnDef="room">
+                                                        <th class="mth" style="width: 281px;" mat-header-cell *matHeaderCellDef> Loại phòng </th>
+                                                        <td style="font-weight: normal;" mat-cell *matCellDef="let element">
+                                                            <span class="show-acc">{{element?.room}}</span>
+                                                            <div class="acc-detailCom">
+                                                                <div class="item img" style="background-image: url({{element?.url_room}});">
+                                                                </div>
+                                                                
+                                                            </div>
+                                                            <!-- {{element.name}}  -->
+                                                        </td>
+                                                    </ng-container>
+                                                  
+                                                    <!-- Weight Column -->
+                                                    <ng-container matColumnDef="services">
+                                                        <th class="mth" style="width: 268px;" mat-header-cell *matHeaderCellDef> Dịch vụ bao gồm </th>
+                                                        <td style="font-weight: normal;" mat-cell *matCellDef="let element">
+                                                            <div class="acc-detailCom" *ngFor="let service of element?.services">
+                                                                <img src="../../assets/images/check-mark.png" alt="image" style="float: left; width: 15px; height: 15px; margin-right: 5px;">
+                                                                {{ service }}
+                                                                <br>
+                                                            </div>
+                                                            
+                                                        </td>
+                                                    </ng-container>
+                                                  
+                                                    <!-- Symbol Column -->
+                                                    <ng-container matColumnDef="price">
+                                                      <th class="mth" mat-header-cell *matHeaderCellDef style="width: 140px;"> Giá phòng</th>
+                                                      <td style="font-weight: normal;" mat-cell *matCellDef="let element"> {{element?.price | currency:'VND':'symbol':'1.0-0'}} / mỗi đêm</td>
+                                                    </ng-container>
+                                                  
+                                                    <tr class="mtr" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                                    <tr class="tcombo" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                                  </table> 
+                                                  
+                                                  <mat-paginator 
+                                                    [pageSizeOptions]="[3]"
+                                                    (page)="onPageChange($event)"
+                                                    showFirstLastButtons
+                                                    hidePageSize
+                                            
+                                                >
+                                                  </mat-paginator>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form #bookForm="ngForm" (ngSubmit)="onSubmitBook(bookForm)" style="position: relative;">
+                            <div class="mda-tilte-3">
+                                <span class="mda-tilte-name">
+                                    Thông tin liên hệ
+                                </span>
+                            </div>
+                            <div id="mda-guest-b">
+                                <div class="row">
+                                    <div class="form-group col-md-4">
+                                        <label for="">HỌ TÊN *: </label>
+                                        <input
+                                            class="form-control"                            
+                                            type="text"
+                                            name="fullname"
+                                            ngModel
+                                            #fullname="ngModel"
+                                            required
+                                        />
+                                        <small *ngIf="!fullname.valid && fullname.touched" class="form-text text-muted">Vui lòng nhập họ tên!</small>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="">Email *: </label>
+                                        <input
+                                            class="form-control"
+                                            type="text"
+                                            ngModel
+                                            name="email"
+                                            #email="ngModel"
+                                            email
+                                            required
+                                        />
+                                        <small *ngIf="!email.valid && email.touched" class="form-text text-muted">Vui lòng nhập email hợp lệ!</small>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="">Số điện thoại *: </label>
+                                        <input
+                                            class="form-control"
+                                            type="tel"
+                                            ngModel
+                                            name="phone"
+                                            pattern="[0-9]*"
+                                            #phone="ngModel"
+                                            minlength="10"
+                                            maxlength="10"
+                                            required
+                                        />
+                                        <small *ngIf="!phone.valid && phone.touched" class="form-text text-muted">Vui lòng nhập số điện thoại hợp lệ!</small>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="">Địa chỉ *: </label>
+                                        <textarea 
+                                            ngModel
+                                            name="addressShow" 
+                                            #address="ngModel"
+                                            maxlength="255"
+                                            required
+                                        >
+                                        </textarea>
+                                        <small *ngIf="!address.valid && address.touched" class="form-text text-muted">Vui lòng nhập địa chỉ!</small>
+                                    </div>
+                                    <div class="form-group col-md-8">
+                                        <label for="">Ghi chú: </label>
+                                        <textarea
+                                            ngModel
+                                            name="Note" 
+                                            maxlength="255"
+                                        >
+                                        </textarea>
+                                    </div>
+                                    <hr>
+                                    <div class="form-group col-md-4">
+                                        <label for="">Người lớn *: </label>
+                                        <input
+                                            class="form-control"
+                                            type="number"
+                                            name="adult"
+                                            required
+                                            min="1"
+                                            
+                                            [(ngModel)] = "numAdult"
+                                            #adult="ngModel"
+                                            (input)="checkAdult($event)"
+                                        />
+                                        <small *ngIf="isValidAdult || (!adult.valid && adult.touched)" class="form-text text-muted">
+                                            Vui lòng nhập vào giá trị hợp lệ, lớn hơn hoặc bằng 0!
+                                        </small>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="">Trẻ em (5 - 11 tuổi): </label>
+                                        <input
+                                            class="form-control"
+                                            type="number"
+                                            name="child"
+                                            min="0"
+                                            [(ngModel)] = "numChild"
+                                            #child="ngModel"
+                                            (input)="checkChild($event)"
+                                        />
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="">Trẻ nhỏ (2 - 5 tuổi): </label>
+                                        <input
+                                            class="form-control"
+                                            type="number"
+                                            name="baby"
+                                            min="0"
+                                            [(ngModel)] = "numBaby"
+                                            #baby="ngModel"
+                                            (input)="checkBaby($event)"
+                                        />
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="">Khách sạn *: </label>
+                                        <select name="hotel" id="" [(ngModel)]="selectedHotel" (change)="onHandleSelectHotel()">
+                                            <option *ngFor="let hotel of hotels" [value]="hotel?.id">{{hotel?.name}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="">Loại phòng *: </label>
+                                        <select name="room" id="" [(ngModel)]="selectedRoom" (change)="onHandleSelectRoom()">
+                                            <option *ngFor="let room of roomsByHotel" [value]="room?.id">{{room?.name}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="">Số lượng phòng *: </label>
+                                        <input
+                                            class="form-control"
+                                            type="number"
+                                            name="num_room"
+                                            required
+                                            min="1"
+                                            [(ngModel)] = "numRoom"
+                                            #num_room="ngModel"
+                                            (input)="checkNumRoom($event)"
+                                        />
+                                        <small *ngIf="isValidRoom || (!num_room.valid && num_room.touched)" class="form-text text-muted">
+                                            Vui lòng nhập vào giá trị hợp lệ, lớn hơn hoặc bằng 0!
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row btn-thanhtoan" style="justify-content: center; align-items: center; margin-top: 20px;">
+                                <p class="my_p" style="text-align: center;">Bằng việc tiếp tục, bạn chấp nhận đồng ý với chính sách/điều khoản như trên.</p>
+                                <button type="submit" style="width: 150px;">
+                                    HOÀN THÀNH
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

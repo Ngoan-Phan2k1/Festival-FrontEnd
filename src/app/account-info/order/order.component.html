@@ -1,0 +1,255 @@
+<div class="vw-my-order-page" *ngIf="tabel_tour.length === 0">
+  <div class="d-flex flex-column mt-4">
+    <div class="d-flex align-items-center justify-content-center flex-column">
+      <img src="../../../assets/images/empty-page.png">
+      <p class="g-font-size-16 font-weight-bold g-color-gray-light-v2">Hiện tại bạn chưa có giao dịch nào</p>
+    </div>
+    <div class="text-center mt-4">
+      <a [routerLink]="['/tour']" class="now-button">
+        Đặt tour ngay
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="table-wrap" *ngIf="tabel_tour.length !== 0">
+    <div class="nb-card-header" style="text-align: center;">
+        <h3 style="margin: 0 auto;">Tour đã đặt</h3>
+    </div>
+    <div class="hotel-table">
+        <table mat-table [dataSource]="dataSource">
+
+            <ng-container matColumnDef="tour">
+              <th mat-header-cell *matHeaderCellDef> Thông tin chi tiết </th>
+              <td mat-cell *matCellDef="let element">
+                <span class="show-acc">{{element?.name}}</span>
+                <div class="acc-detailCom">
+                  <div class="item img" style="background-image: url({{element?.tour_url}});">
+                  </div>
+                </div>
+                <div class="mda-info-list">
+                  <div class="mda-row">
+                      <span class="be">Thời gian:</span>
+                      <span style="font-weight: bold;">{{element?.description}}</span>
+                  </div>
+                  <div class="mda-row">
+                    <span class="be">Ngày khởi hành:</span>
+                    <span style="font-weight: bold;">{{element?.fromDate | date:'dd/MM/yyyy'}}</span>
+                  </div>
+                  <div class="mda-row">
+                    <span class="be">Ngày về:</span>
+                    <span style="font-weight: bold;">{{element?.toDate | date:'dd/MM/yyyy'}}</span>
+                  </div>
+                  <div class="mda-row">
+                    <span class="be">Nơi khởi hành:</span>
+                    <span style="font-weight: bold;">{{element?.fromWhere}}</span>
+                  </div>
+                  <div class="mda-row">
+                      <span class="be">Nơi đến:</span>
+                      <span style="font-weight: bold;">{{element?.toWhere}}</span>
+                  </div>
+                  <div class="mda-row">
+                      <span class="be">Vé người lớn:</span>
+                      <span style="font-weight: bold;">{{element?.bookedAdult}} vé ({{element?.priceAdult | currency:'VND':'symbol':'1.0-0'}}/người)</span>
+                  </div>
+                  <div class="mda-row">
+                    <span class="be">Vé trẻ em:</span>
+                    <span style="font-weight: bold;">{{element?.bookedChild}} vé ({{element?.priceChild | currency:'VND':'symbol':'1.0-0'}}/người)</span>
+                  </div>
+                  <div class="mda-row">
+                    <span class="be">Vé trẻ nhỏ:</span>
+                    <span style="font-weight: bold;">{{element?.bookedBaby}} vé ({{element?.priceBaby | currency:'VND':'symbol':'1.0-0'}}/người)</span>
+                  </div>
+                </div>
+
+                <div class="mda-info-list">
+                  <h4 style="font-weight: bold;">Thông tin người đặt</h4>
+                  <div class="mda-row">
+                      <span class="be">Họ tên:</span>
+                      <span style="font-weight: bold;">{{element?.fullname}}</span>
+                  </div>
+                  <div class="mda-row">
+                      <span class="be">Email:</span>
+                      <span style="font-weight: bold;">{{element?.email}}</span>
+                  </div>
+                  <div class="mda-row">
+                    <span class="be">Điện thoại:</span>
+                    <span style="font-weight: bold;">{{element?.phone}}</span>
+                  </div>
+                  <div class="mda-row">
+                      <span class="be">Địa chỉ:</span>
+                      <span style="font-weight: bold;">{{element?.address}}</span>
+                  </div>
+                  <div class="mda-row">
+                      <span class="be">Ghi chú:</span>
+                      <span style="font-weight: bold;">{{element?.note || '&nbsp;'}}</span>
+                  </div>
+                  
+                </div>
+
+                <div class="mda-info-list">
+                  <h4 style="font-weight: bold;">Khách sạn đã đặt</h4>
+                  <div class="mda-row">
+                      <span class="be">Khách sạn:</span>
+                      <span style="font-weight: bold;">{{element?.hotel}}</span>
+                  </div>
+                  <div class="mda-row">
+                      <span class="be">Loại phòng:</span>
+                      <span style="font-weight: bold;">{{element?.room}}</span>
+                  </div>
+                  <div class="mda-row">
+                      <span class="be">Giá:</span>
+                      <span style="font-weight: bold;">{{element?.priceRoom | currency:'VND':'symbol':'1.0-0'}}/đêm</span>
+                  </div>
+                  <div class="mda-row">
+                      <span class="be">Số phòng đặt:</span>
+                      <span style="font-weight: bold;">{{element?.num_room || '&nbsp;'}}</span>
+                  </div>
+                  
+                </div>
+              </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="total">
+              <th mat-header-cell *matHeaderCellDef style="width: 140px;"> Tổng tiền </th>
+              <td mat-cell *matCellDef="let element" class="mth">
+                {{ element?.total | currency:'VND':'symbol':'1.0-0' }}
+              </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef style="width: 300px;"> Trạng thái </th>
+              <td mat-cell *matCellDef="let element" class="mth">
+                Đã thanh toán
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef style="width: 340px;"> Hành động </th>
+                <td mat-cell *matCellDef="let element">
+                  
+                  <div ngbDropdown class="d-inline-block">
+                    <button type="button" class="btn btn-outline-success" id="dropdownBasic1" ngbDropdownToggle>
+                      hành động
+                    </button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                      <button ngbDropdownItem (click)="onCancleBooked(element?.booked_id, element?.checkout)">Hủy tour</button>
+                      <button ngbDropdownItem 
+                      (click)="openCheckout(
+                        contentCheckout,
+                        element?.booked_id,
+                        element?.total,
+                        element?.checkout
+                      )"
+                      >
+                        Thanh toán
+                      </button>
+                    </div>
+
+                  </div>
+                    
+                </td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+ 
+        </table>
+
+        <mat-paginator 
+          [pageSizeOptions]="[1]"                                          
+          showFirstLastButtons
+          hidePageSize                               
+        >
+        </mat-paginator>
+        
+    </div>
+</div>
+
+<!-- <div class="table-wrap" style="margin-top: 7rem;">
+    <div class="hotel-table">
+        <table mat-table [dataSource]="dataSource">
+
+            <ng-container matColumnDef="position">
+              <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Tour </th>
+              <td mat-cell *matCellDef="let element"> sdjskdjksdjksjdksdksjdksjdsdsdsdsdsd </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Thông tin chi tiết </th>
+              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="weight">
+              <th mat-header-cell *matHeaderCellDef> Số chỗ đặt </th>
+              <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="symbol">
+              <th mat-header-cell *matHeaderCellDef> Thời gian </th>
+              <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef > Hành động </th>
+                <td mat-cell *matCellDef="let element">
+                    <div style="display: flex; height: 100%;">
+                        
+                    </div>
+                </td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+ 
+        </table>
+          
+          
+    </div>
+</div> -->
+
+
+<ng-template #contentCheckout let-modal>
+	<div class="modal-header">
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button> 
+	</div>
+
+    <div class="h-popup">
+        <h4>PHƯƠNG THỨC THANH TOÁN</h4>
+    </div>
+	<div class="modal-body">
+		<form #checkoutForm="ngForm">
+              
+            <div class="form-check">
+                <input 
+                    class="form-check-input" 
+                    type="radio" 
+                    name="payment1" 
+                    id="payment1"
+                    [(ngModel)]="selectedVNPay"
+                    [value]="false"
+                />
+                <label class="form-check-label" for="payment1"> Thanh toán tại quầy </label>
+            </div>
+            
+            <div class="form-check">
+                <input 
+                    class="form-check-input" 
+                    type="radio" 
+                    name="payment2" 
+                    id="payment2" 
+                    checked
+                    [(ngModel)]="selectedVNPay"
+                    [value]="true"
+                />
+                <label class="form-check-label" for="payment2"> Thanh toán qua VNPAY </label>
+            </div>
+            <div class="modal-footer-res">
+                <button type="button" class="btn btn-outline-dark" (click)="handleCheckout()">Xác nhận</button>
+            </div>
+           
+
+        </form>
+	</div>
+	
+</ng-template>

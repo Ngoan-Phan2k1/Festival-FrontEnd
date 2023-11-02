@@ -4,12 +4,15 @@ import { throwError, Subject, BehaviorSubject } from 'rxjs';
 import { map, tap, catchError } from 'rxjs/operators';
 
 import { DataStorageService } from "../data-storage.service";
+import { TourDetailService } from "./tour-detail.service";
+import { Tour } from "../tour.model";
 
 @Injectable({ providedIn: 'root' })
 export class BookedTourService {
 
 
     constructor(
+        private tourDetailService: TourDetailService,
         private dataStorageService: DataStorageService,
         private http: HttpClient
     ) {}
@@ -51,13 +54,34 @@ export class BookedTourService {
         )
         .pipe(
             catchError(this.handleError),
-            tap(() => {
+            tap((data) => {
 
-                //this.dataStorageService.getTourById(tourId)
+                
+                const tour: Tour = new Tour(
+                    data.tourDto.id,
+                    data.tourDto.festival_id,
+                    data.tourDto.name,
+                    data.tourDto.fromWhere,
+                    data.tourDto.toWhere,
+                    data.tourDto.description,
+                    data.tourDto.fromDate,
+                    data.tourDto.toDate,
+                    data.tourDto.priceAdult,
+                    data.tourDto.priceChild,
+                    data.tourDto.priceBaby,
+                    data.tourDto.capacity,
+                    data.tourDto.booked,
+                    data.tourDto.capacity - data.tourDto.booked, // Tính toán canbook
+                    data.tourDto.imageDTO,
+                    data.tourDto.hotelDTOs,
+                    null
+                );
+                
+                this.tourDetailService.setTourDetail(tour);
 
-                this.dataStorageService.getTourById(tourId).subscribe((tour) => {
-                    //console.log("Sau khi booked: ", tour);
-                })
+                // this.dataStorageService.getTourById(tourId).subscribe((tour) => {
+                //     //console.log("Sau khi booked: ", tour);
+                // })
             })
             
         );

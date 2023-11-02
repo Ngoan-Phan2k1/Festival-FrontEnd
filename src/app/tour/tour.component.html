@@ -1,4 +1,4 @@
-<section class="hero-wrap hero-wrap-2" style="background-image: url('../../assets/images/destination-single.jpg');" data-stellar-background-ratio="0.5">
+<section class="hero-wrap hero-wrap-2" style="background-image: url('../../assets/images/destination-single.jpg');">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text align-items-end justify-content-start">
@@ -13,16 +13,44 @@
 <section class="ftco-section">
     <div class="container">
         <div class="row">
-            <div class="col-lg-9 pr-lg-4">
+            <div class="col-lg-9">
+                <div class="predict">
+                    <mat-icon *ngIf="url" (click)="clearImg()">cancel</mat-icon>
+                    <!-- <h2 *ngIf="predicted !== ''">Kết quả: {{predicted}}</h2> -->
+                </div>
+                
                 <div class="row">
+                    <img [src]="url" alt="" *ngIf="url" style="position: relative; width: 300px; height: 200px;">
+                </div>
+                
+                <div *ngIf="url" class="dudoan">
+                    <mat-icon style="float: left; margin-bottom: 10px;">image_search</mat-icon>
+                    Dự đoán
+                </div>
+                
+                <div class="img-div" *ngIf="!url">
+                    <input type="text" placeholder="Tìm kiếm bằng hình ảnh">
+                    <button type="button">
+                        <mat-icon (click)="fileInput.click()">camera_alt</mat-icon>
+                    </button>
+                    <input type="file" #fileInput (change)="onImageSelected($event)" style="display: none;">
+                </div>
+            </div>
+            <div class="col-lg-9 pr-lg-4">
+                
+                <div class="row">
+                    
                     <div class="col-md-6 col-lg-4 ftco-animate" *ngFor="let tour of tours">
                         <div class="project">
                             <div class="img">
-                                <div class="vr"><span>Sale</span></div>
-                                <a [routerLink]="['/tour', tour.id]"><img src="../../assets/images/destination-1.jpg" class="img-fluid" alt="Image load fail"></a>
+                                <!-- <div class="vr"><span>Sale</span></div> -->
+                                <a [routerLink]="['/tour', tour.id]"><img [src]="tour.url" class="img-fluid" alt=""></a>
                             </div>
                             <div class="text">
-                                <h4 class="price"><span class="old-price mr-2">{{ formatPrice(4000000)}}</span>{{ formatPrice ( tour.price ) }}</h4>
+                                <h4 class="price"><span class="old-price mr-2">
+                                    <!-- {{ formatPrice(4000000)}} -->
+                                    </span>{{ tour.priceAdult | currency:'VND':'symbol':'1.0-0' }}
+                                </h4>
                                 
                                 <div class="mda-img-box-wrap">
                                     <span>{{tour.description}}</span>
@@ -206,7 +234,7 @@
                         </div>
                     </div> -->
                 </div>
-                <div class="row mt-5">
+            <div class="row mt-5">
               <div class="col text-center">
                 <div class="block-27">
                   <ul>
@@ -224,12 +252,12 @@
             </div> <!-- end -->
             <div class="col-lg-3 p-4 bg-light">
                 <div class="search-wrap-1 ftco-animate">
-                    <h2 class="mb-3">Find Places</h2>
+                    <h2 class="mb-3">Điểm đến</h2>
                     <form action="#" class="search-property-1">
                         <div class="row">
                             <div class="col-lg-12 align-items-end mb-3">
                                 <div class="form-group">
-                                    <label for="#">Destination</label>
+                                    <label for="#">Lễ hội</label>
                                     <div class="form-field">
                                         <div class="icon"><span class="ion-ios-search"></span></div>
                                         <input type="text" class="form-control" placeholder="Search place">
@@ -238,7 +266,7 @@
                             </div>
                             <div class="col-lg-12 align-items-end mb-3">
                                 <div class="form-group">
-                                    <label for="#">Check-in date</label>
+                                    <label for="#">Ngày đi</label>
                                     <div class="form-field">
                                         <div class="icon"><span class="ion-ios-calendar"></span></div>
                                         <input type="text" class="form-control checkin_date" placeholder="Check In Date">
@@ -247,16 +275,16 @@
                             </div>
                             <div class="col-lg-12 align-items-end mb-3">
                                 <div class="form-group">
-                                    <label for="#">Check-out date</label>
+                                    <label for="#">Ngày về</label>
                                     <div class="form-field">
                                         <div class="icon"><span class="ion-ios-calendar"></span></div>
                                         <input type="text" class="form-control checkout_date" placeholder="Check Out Date">
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-12 align-items-end mb-3">
+                            <!-- <div class="col-lg-12 align-items-end mb-3">
                                 <div class="form-group">
-                                    <label for="#">Price Limit</label>
+                                    <label for="#">Giá</label>
                                     <div class="form-field">
                                         <div class="select-wrap">
                                             <div class="icon"><span class="ion-ios-arrow-down"></span></div>
@@ -279,11 +307,11 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-lg-12 align-self-end">
                                 <div class="form-group">
                                     <div class="form-field">
-                                        <input type="submit" value="Search" class="form-control btn btn-primary">
+                                        <input type="submit" value="Tìm kiếm" class="form-control btn btn-primary">
                                     </div>
                                 </div>
                             </div>

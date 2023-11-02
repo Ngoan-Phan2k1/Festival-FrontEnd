@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { AuthService, AuthenticationResponse } from '../auth/auth.service';
 import Swal from 'sweetalert2';
+import { UserService } from '../account-info/user.service';
 
 @Component({
   selector: 'app-header',
@@ -14,6 +15,7 @@ import Swal from 'sweetalert2';
 export class HeaderComponent implements OnInit {
 
   isAuthenticated = false;
+  name: string;
 
   customOptions: OwlOptions = {
     loop: true,
@@ -44,6 +46,7 @@ export class HeaderComponent implements OnInit {
   }
 
   constructor(
+    private userService: UserService,
     private authService: AuthService,
     private modalServiceLogin: NgbModal,
     private modalServiceResgister: NgbModal
@@ -52,11 +55,32 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      this.authService.user.subscribe(user => {
-        this.isAuthenticated = !!user;
-        // console.log(!user);
-        // console.log(!!user);
+
+    // window.addEventListener("scroll", function () {
+    //   const navbar = document.querySelector(".navbar");
+    //   if (window.pageYOffset > 0) {
+    //     navbar.classList.add("sticky-navbar");
+    //   } else {
+    //     navbar.classList.remove("sticky-navbar");
+    //   }
+    // });
+
+    this.authService.user.subscribe(user => {
+      
+      this.isAuthenticated = !!user;
+      if (this.isAuthenticated) {
+        const parts = user.fullname.split(' '); // Tách chuỗi thành mảng các từ
+        this.name = parts[parts.length - 1]; // Lấy phần tử cuối cùng của mảng
+      }
     });
+
+    this.userService.userChanged.subscribe(
+      (user) => {
+        const parts = user.fullname.split(' '); // Tách chuỗi thành mảng các từ
+        this.name = parts[parts.length - 1]; // Lấy phần tử cuối cùng của mảng
+      }
+    )
+
   }
 
 
@@ -75,6 +99,7 @@ export class HeaderComponent implements OnInit {
   openRegister(content: any) {
 		this.modalServiceResgister.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
 			(result) => {
+        console.log("RESULT")
 				this.closeResult = `Closed with: ${result}`;
 			},
 			(reason) => {

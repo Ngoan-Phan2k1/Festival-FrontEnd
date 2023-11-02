@@ -1,0 +1,243 @@
+<!-- <section class="vh-100 bg-image">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">KẾT QUẢ THANH TOÁN</h2>
+
+              <form>
+
+                <div class="form-outline mb-4">
+                  
+                  <label class="form-label" for="form3Example1cg">Mã giao dịch thanh toán:</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  
+                  <label class="form-label" for="form3Example3cg">Số tiền:</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                    
+                    <label class="form-label" for="form3Example3cg">Mô tả giao dịch:</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                    
+                    <label class="form-label" for="form3Example3cg">Mã lỗi thanh toán:</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                    
+                    <label class="form-label" for="form3Example3cg">Mã ngân hàng thanh toán:</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                    
+                    <label class="form-label" for="form3Example3cg">Thời gian thanh toán:</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                    
+                    <label class="form-label" for="form3Example3cg">Tình trạng giao dịch:</label>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                  <button type="button"
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                </div>
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ -->
+
+
+ <div class="container h-100">
+  <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+      <div class="card" style="border-radius: 15px;">
+        <div class="card-body p-5">
+          <h2 class="text-uppercase text-center mb-5">THÔNG TIN THANH TOÁN</h2>
+          <div class="box-simple">
+
+            <div class="form-item">
+              <div class="row row-8 list-mb4 list-crop">
+                <div class="col-sm-5 col r_fl">
+                  <div class="title">
+                    Mã đơn
+                  </div>
+                  <div class="col-sm-7 col-auto">
+                    <div class="value weight5 text-right c_fl">
+                      {{bookedTourId}}
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+            <div class="form-item">
+              <div class="row row-8 list-mb4 list-crop">
+                <div class="col-sm-5 col r_fl">
+                  <div class="title">
+                    Số tiền
+                  </div>
+                  <div class="col-sm-7 col-auto">
+                    <div class="value weight5 text-right c_fl">
+                      {{ vnp_Amount | currency:'VND':'symbol':'1.0-0' }}
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+            <div class="form-item">
+              <div class="row row-8 list-mb4 list-crop">
+                <div class="col-sm-5 col r_fl">
+                  <div class="title">
+                    Kết quả
+                  </div>
+                  <div class="col-sm-7 col-auto c_fl">
+                    <div class="value weight5 text-right">
+                      {{ isValid ? 'Giao dịch thành công' : 'Giao dịch thất bại' }}
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+            <div class="form-item">
+              <div class="row row-8 list-mb4 list-crop">
+                <div class="col-sm-5 col r_fl">
+                  <div class="title">
+                    Mã giao dịch
+                  </div>
+                  <div class="col-sm-7 col-auto">
+                    <div class="value weight5 text-right c_fl">
+                      {{vnp_TxnRef}}
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+            <div class="form-item">
+              <div class="row row-8 list-mb4 list-crop">
+                <div class="col-sm-5 col r_fl">
+                  <div class="title">
+                    Thời gian giao dịch
+                  </div>
+                  <div class="col-sm-7 col-auto">
+                    <div class="value weight5 text-right c_fl">
+                      {{ dateOfCheckout | date:'dd/MM/yyyy HH:mm:ss' }}
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+          <!-- <button type="button">Quay lại</button> -->
+          <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+            
+            <button type="button" class="btn btn-primary btn-lg">
+              <a routerLink="/account/order" routerLinkActive="active" class="nav-link">Quay lại</a>
+            </button>
+          </div>
+
+          <form>
+
+            <!-- <div class="form-outline mb-4">
+              
+              <label class="form-label" for="form3Example1cg">Mã đơn: 1</label>
+            </div>
+
+            <div class="form-outline mb-4">
+              
+              <label class="form-label" for="form3Example3cg">Số tiền:</label>
+            </div>
+
+            <div class="form-outline mb-4">
+                
+                <label class="form-label" for="form3Example3cg">Kết quả:</label>
+            </div>
+
+            <div class="form-outline mb-4">
+                
+                <label class="form-label" for="form3Example3cg">Mã giao dịch:</label>
+            </div>
+
+            <div class="form-outline mb-4">
+                
+                <label class="form-label" for="form3Example3cg">Mã ngân hàng thanh toán:</label>
+            </div>
+
+            <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example3cg">Thời gian thanh toán:</label>
+            </div> -->
+
+            <!-- <div class="attr">
+              <ul>
+                  <li >
+                      <div class="at">Mã tour</div>
+                      <div class="as">1 &nbsp;</div>
+                  </li>
+                  <li >
+                      <div class="at">Thời gian:</div>
+                      <div class="as">5 ngày &nbsp;</div>
+                  </li>
+                  <li >
+                      <div class="at">Khởi hành</div>
+                      <div class="as">nothing &nbsp;</div>
+                  </li>
+                  <li >
+                      <div class="at">Xuất phát:</div>
+                      <div class="as">Từ Cần Thơ &nbsp;</div>
+                  </li>
+                  <li>
+                      <div class="at">Giá:</div>
+                      <div class="as"> 2000000 &nbsp;</div>
+                  </li>
+                  
+                  <li >
+                      <div class="at">Số chỗ:</div>
+                      <div class="as">1 &nbsp;</div>
+                  </li>
+                  <li >
+                      <div class="at">Số chỗ còn nhận:</div>
+                      <div class="as">1 &nbsp;</div>
+                  </li>
+              </ul>
+              
+          </div> -->
+
+            
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

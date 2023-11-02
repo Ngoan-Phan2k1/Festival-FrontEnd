@@ -4,7 +4,7 @@ import { Tour } from '../tour.model';
 import { DataStorageService } from '../data-storage.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CurrencyPipe} from '@angular/common';
-import { Observable } from 'rxjs';
+import { Observable, lastValueFrom } from 'rxjs';
 
 import { ModalDismissReasons, NgbDatepickerModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from '../../auth/auth.service';
@@ -41,21 +41,50 @@ export class TourDetailComponent implements OnInit {
   ngOnInit(): void {
     window.scrollTo(0, 0);
 
+    Swal.fire({
+      title: 'Loading...',
+      html: 'Please wait',
+      allowOutsideClick: false, 
+      didOpen: () => {
+        Swal.showLoading()
+      }
+    });
+
+    this.tourDetailService.tourdetailChanged.subscribe(
+      (tour) => {
+        this.tour = tour;
+        this.dataService.downloadImageByName(this.tour.imageDTO.name).subscribe(
+          (res) => {
+            this.tour.url = res.url;
+            // this.hotelService.setHotel(this.hotel);
+            // this.url = res.url;
+          }
+        )
+        Swal.close();
+      }
+    )
+
     this.route.params
     .subscribe(
       (params: Params) => {
         this.id = +params['id'];
-        //this.recipe = this.recipeService.getRecipe(this.id);
-        //console.log(this.dataService.getTourById(this.id))
         this.dataService.getTourById(this.id).subscribe(data => {
           this.tour = data;
+          this.dataService.downloadImageByName(this.tour.imageDTO.name).subscribe(
+            (res) => {
+              this.tour.url = res.url;
+              // this.hotelService.setHotel(this.hotel);
+              // this.url = res.url;
+            }
+          )
         })
+        Swal.close();
       }
     )
 
     this.tourDetailService.tourdetailChanged.subscribe(
       (tour) => {
-        console.log("Tour Detail Changed: ", tour);
+        //console.log("Tour Detail Changed: ", tour);
         this.tour = tour;
       }
     )
@@ -78,7 +107,7 @@ export class TourDetailComponent implements OnInit {
         this.isCapacityInvalid = false;
     }
     
-}
+  }
 
   formatPrice(price: number): string {
     return this.currencyPipe.transform(price, 'VND', 'symbol', '1.0-0') || '';
@@ -143,6 +172,15 @@ export class TourDetailComponent implements OnInit {
 
   onSubmitBooked(form: NgForm) {
 
+    Swal.fire({
+      title: 'Loading...',
+      html: 'Please wait',
+      allowOutsideClick: false, 
+      didOpen: () => {
+        Swal.showLoading()
+      }
+    });
+
     if (!form.valid) {
       console.log("Form is not valid");
       return;
@@ -154,29 +192,25 @@ export class TourDetailComponent implements OnInit {
     const touristId = this.touristId;
 
     let authObs: Observable<any>;
-
-
     authObs = this.bookedTourService.bookedTour(booked, phone, tourId, touristId);
     authObs.subscribe({
       next: (resData: any) => {
-        //console.log(resData);
+        console.log(resData);
+        Swal.close()
+        Swal.fire({
+          icon: 'success',
+          title: 'Đặt tour thành công',
+          showConfirmButton: false,
+          timer: 2000
+        }).then(() => {
+          this.modalService.dismissAll();
+          form.reset();
+        })
 
-        //this.tour.canbook = this.tourCapacity - (resData.booked + this.tour.booked);
-        // Xử lý phản hồi thành công ở đây
-        // Swal.close()
-        // Swal.fire({
-        //   icon: 'success',
-        //   title: 'Đăng ký thành công',
-        //   showConfirmButton: false,
-        //   timer: 2000
-        // }).then(() => {
-        //   this.modalServiceResgister.dismissAll();
-        //   form.reset();
-        // })
       },
       error: (errorMessage: any) => {
         //console.log("Đây là lỗi: ", errorMessage);
-
+        //Swal.close()
         Swal.fire({
           icon: 'error',
           title: 'Đặt tour không thành công',
@@ -185,6 +219,15 @@ export class TourDetailComponent implements OnInit {
       },
     });
 
+  }
+
+  checkLogin(tour_id: number) {
+    // if (!this.isAuthenticated) {
+    //   Swal.fire('Vui lòng đăng nhập để đặt tour');
+    //   return;
+    // }
+
+    this.router.navigate(['book-tour', tour_id]);
   }
 
 }
