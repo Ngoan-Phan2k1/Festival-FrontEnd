@@ -107,7 +107,7 @@ export class TourDetailComponent implements OnInit {
         this.isCapacityInvalid = false;
     }
     
-}
+  }
 
   formatPrice(price: number): string {
     return this.currencyPipe.transform(price, 'VND', 'symbol', '1.0-0') || '';
@@ -221,13 +221,13 @@ export class TourDetailComponent implements OnInit {
 
   }
 
-  checkLogin() {
-    if (!this.isAuthenticated) {
-      Swal.fire('Vui lòng đăng nhập để đặt tour');
-      return;
-    }
+  checkLogin(tour_id: number) {
+    // if (!this.isAuthenticated) {
+    //   Swal.fire('Vui lòng đăng nhập để đặt tour');
+    //   return;
+    // }
 
-    this.router.navigate(['book-tour']);
+    this.router.navigate(['book-tour', tour_id]);
   }
 
 }

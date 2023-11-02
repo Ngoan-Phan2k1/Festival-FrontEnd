@@ -485,6 +485,14 @@ input.ng-invalid.ng-touched {
     text-overflow: ellipsis; /* Hiển thị dấu ba chấm (...) khi nội dung quá dài */
 }
 
+.link {
+	a {
+		text-decoration: none;
+		list-style: none !important;
+		color: #000000 !important;
+	}
+}
+
 
 
 

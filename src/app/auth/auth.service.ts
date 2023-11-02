@@ -4,6 +4,8 @@ import { catchError, tap } from 'rxjs/operators';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { User } from './user.model';
+import { UserService } from '../account-info/user.service';
+import { UserInfo } from '../account-info/user-info/userinfo.model';
 
 export interface AuthenticationResponse {
     //kind: string;
@@ -27,7 +29,11 @@ export class AuthService {
     private tokenExpirationTimer: any;
     token: string | null = null;
 
-    constructor(private http: HttpClient, private router: Router) {}
+    constructor(
+        private http: HttpClient, 
+        private router: Router,
+        private userService: UserService,
+    ) {}
 
     signup(
         fullname: string,
@@ -106,6 +112,7 @@ export class AuthService {
             clearTimeout(this.tokenExpirationTimer);
         }
         this.tokenExpirationTimer = null;
+        this.router.navigate(['/home']);
     }
 
     autoLogout(expirationDuration: number) {
@@ -128,6 +135,8 @@ export class AuthService {
         const expirationDate = new Date(new Date().getTime() + tokenExpirationDate);
         const user = new User(token, expirationDate, email, touristId, username, fullname);
         this.user.next(user);
+        //UserInfo user_info = new UserInfo(user?.touristId, user?.)
+        //this.userService.setUser(user);
         this.autoLogout(tokenExpirationDate);
         localStorage.setItem('userData', JSON.stringify(user));
     }

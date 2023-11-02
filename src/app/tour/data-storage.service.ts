@@ -9,6 +9,9 @@ import { Hotel } from "../hotel/hotel.model";
 import { Room } from "../hotel/hotel-room/room.model";
 import { Schedule } from "./tour-detail/tour-schedule/schedule.model";
 import { Contact } from "../hotel/contact-form/contact.model";
+import { UserInfo } from "../account-info/user-info/userinfo.model";
+import { ImageDTO } from "../hotel/image.model";
+import { OrderTour } from "../account-info/order/order-tour.model";
 
 @Injectable({ providedIn: 'root' })
 export class DataStorageService {
@@ -36,11 +39,14 @@ export class DataStorageService {
                     description: tour.description,
                     fromDate: tour.fromDate,
                     toDate: tour.toDate,
+                    priceAdult: tour.priceAdult,
+                    priceChild: tour.priceChild,
+                    priceBaby: tour.priceBaby,
                     capacity: tour.capacity,
-                    booked: tour.booked,
-                    price: tour.price,
+                    booked: tour.booked,    
                     canbook: tour.capacity - tour.booked,  //số lượng chỗ còn trống
                     imageDTO: tour.imageDTO,
+                    hotelDTOs: tour.hotelDTOs,
                     url: null
                 }));
             }),
@@ -64,11 +70,14 @@ export class DataStorageService {
                     tour.description,
                     tour.fromDate,
                     tour.toDate,
-                    tour.price,
+                    tour.priceAdult,
+                    tour.priceChild,
+                    tour.priceBaby,
                     tour.capacity,
                     tour.booked,
                     tour.capacity - tour.booked, // Tính toán canbook
                     tour.imageDTO,
+                    tour.hotelDTOs,
                     null
                 );
             }),
@@ -79,9 +88,9 @@ export class DataStorageService {
         )
     }
 
-    getToursByTouristId(id: number, token: string) {
+    getToursByTouristId(id: number, token: string): Observable<OrderTour[]> {
         return this.http
-        .get<BookedTourResponse[]>(
+        .get<OrderTour[]>(
           `http://localhost:8080/api/user/booked/tourist/${id}`
         )
         
@@ -104,11 +113,11 @@ export class DataStorageService {
         );
     }
 
-    removeBookedTour(bookedtourId: number, touristId: number): Observable<BookedTourResponse[]> {
+    removeBookedTour(bookedtourId: number, touristId: number): Observable<OrderTour[]> {
         const params = new HttpParams().set('touristId', touristId);
 
         return this.http
-        .delete<BookedTourResponse[]>(
+        .delete<OrderTour[]>(
           `http://localhost:8080/api/user/booked/${bookedtourId}`,
           {params: params}
         )
@@ -224,8 +233,52 @@ export class DataStorageService {
         const params = new HttpParams().set('tourist_id', tourist_id);
         return this.http
         .delete<Contact[]>(
-          `http://localhost:8080/api/user/contact/${id}`,
+          `http://localhost:8080/api/user/contact/${id}`, 
           {params: params}
+        )
+        .pipe(
+            catchError(this.handleError),
+        )
+    }
+
+    getTouristById(id: number): Observable<UserInfo> {
+        return this.http
+        .get<UserInfo>(
+          `http://localhost:8080/api/tourist/${id}`
+        )
+        .pipe(
+            catchError(this.handleError),
+            // tap((user) => {
+
+            // })
+        )
+    }
+
+    updateTourist(tourist_id: number, fullname: string, username: string, email: string, params: HttpParams): Observable<UserInfo> {
+        //const params = new HttpParams().set('tourist_id', tourist_id);
+        return this.http
+        .put<UserInfo>(
+          `http://localhost:8080/api/tourist/${tourist_id}`,
+          {
+            "fullname": fullname,
+            "username": username,
+            "email": email
+          },
+          {params: params}
+        )
+        .pipe(
+            catchError(this.handleError),
+        )
+    }
+
+    uploadImage(file: File): Observable<ImageDTO> {
+        const formData = new FormData();
+        formData.append('image', file);
+
+        return this.http
+        .post<ImageDTO>(
+            'http://localhost:8080/api/image',
+            formData
         )
         .pipe(
             catchError(this.handleError),
@@ -249,8 +302,97 @@ export class DataStorageService {
         )
     }
 
+    bookedTour(
+        bookedAdult: number,
+        bookedChild:  number,
+        bookedBaby: number,
+        fullname: string,
+        email: string,
+        address: string,
+        note: string,
+        num_room: number,
+        phone: string,
+        tour_id: number,
+        tourist_id: number,
+        room_id: number,
+        token: string
+    ) {
+
+        const headers = new HttpHeaders({
+            'Authorization': 'Bearer ' + token
+        });
+
+        return this.http.post<any>('http://localhost:8080/api/user/booked', 
+            {
+                bookedAdult: bookedAdult,
+                bookedChild: bookedChild,
+                bookedBaby: bookedBaby,
+                fullname: fullname,
+                email: email,
+                address: address,
+                note: note,
+                num_room: num_room,
+                phone: phone,
+                room: {
+                    "id": room_id
+                },
+                tour: {
+                    "id": tour_id
+                },
+                tourist: {
+                    "id": tourist_id
+                },
+            },
+            { headers: headers}
+        )
+        .pipe(
+            catchError(this.handleError),
+            tap((data) => {
+
+                
+                const tour: Tour = new Tour(
+                    data.tourDto.id,
+                    data.tourDto.festival_id,
+                    data.tourDto.name,
+                    data.tourDto.fromWhere,
+                    data.tourDto.toWhere,
+                    data.tourDto.description,
+                    data.tourDto.fromDate,
+                    data.tourDto.toDate,
+                    data.tourDto.priceAdult,
+                    data.tourDto.priceChild,
+                    data.tourDto.priceBaby,
+                    data.tourDto.capacity,
+                    data.tourDto.booked,
+                    data.tourDto.capacity - data.tourDto.booked, // Tính toán canbook
+                    data.tourDto.imageDTO,
+                    data.tourDto.hotelDTOs,
+                    null
+                );
+                
+                this.tourDetailService.setTourDetail(tour);
+            })
+            
+        );
+    }
+
+    prediction(image: File): Observable<any> {
+        const formData = new FormData();
+        formData.append('image', image);
+
+        return this.http
+        .post<any>(
+            'http://localhost:5000/predict',
+            formData
+        )
+        .pipe(
+            catchError(this.handleError),
+        )
+    }
+
     private handleError(errorRes: HttpErrorResponse) {
         
+        console.log(errorRes);
         let errorMessage = 'Lỗi không xác định';
         if (!errorRes.error || !errorRes.error.message) {
             return throwError(() => new Error (errorMessage));

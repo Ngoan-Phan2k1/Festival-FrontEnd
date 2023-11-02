@@ -1,0 +1,220 @@
+
+@font-face {
+	font-family: Montserrat-Regular;
+	src: url("../../assets/fonts/Montserrat/static/Montserrat-Regular.ttf");
+}
+
+@font-face {
+	font-family: Montserrat-Bold;
+	src: url("../../assets/fonts/Montserrat/static/Montserrat-Bold.ttf");
+}
+
+.ftco-section{
+	padding: 7em 0;
+}
+
+.vw-user-setting-container {
+    margin: auto!important;
+    max-width: 1152px!important;
+    padding: 3rem 0!important;
+
+    img {
+        vertical-align: middle;
+        border-style: none;
+    }
+}
+
+.col-lg-30{
+    
+    @media (min-width: 992px) {
+       
+        //position: fixed;
+        min-width: 370px;
+        max-width: 370px;
+        position: relative;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+}
+
+.col-lg-70 {
+    @media (min-width: 992px) {
+        margin: 0;
+        flex: 1 1 auto!important;
+        position: relative;
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+}
+
+.nav-user-profile {
+    width: 340px;
+    background: #fff;
+    box-shadow: 0 10px 20px rgba(0,0,0,.05);
+    border-radius: 8px;
+    padding: 10px;
+    border: 1px solid #ced4da;
+
+    //position: fixed;
+    
+
+
+    .box-info-container{
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #d9d9d9;
+
+            .avatar-upload{
+                display: contents;
+                width: 100%;
+                zoom: 1;
+
+                .ant-upload-select-picture-card {
+                    display: inline-block;
+                    width: auto!important;
+                    height: auto!important;
+                    padding: 0!important;
+                    margin: 0!important;
+                    border: none!important;
+                    background-color: transparent!important;
+                    border-radius: 2px;
+                    cursor: pointer;
+                    transition: border-color .3s;
+                    color: rgba(0,0,0,.85);  
+
+                    .ant-upload {
+                        padding: 0!important;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        height: 100%;
+                        text-align: center;
+                        cursor: not-allowed;
+                        box-sizing: border-box;
+                        color: rgba(0,0,0,.85);
+                        font-size: 14px;
+
+                        .avatar-image-wrapper {
+                            position: relative;
+
+                            .avatar {
+                                width: 120px;
+                                height: 120px;
+                                border-radius: 50%;
+                                object-fit: cover;
+                                margin-bottom: 20px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .user-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .vw-fullname{
+                text-align: center;
+            }
+        }
+    }
+
+    .nav-content{
+        padding: 0 10px;
+
+        a {
+            width: 100%;
+            text-decoration: none;
+            list-style: none;
+            color: #212529 !important;
+        }
+        .vw-menu-user-item {
+            font-size: .9rem!important;
+            margin: 0;
+            padding: 10px;
+            cursor: pointer;
+
+            
+
+            img {
+                max-height: 16px;
+                max-width: 16px;
+                margin-right: 10px;
+                vertical-align: middle;
+                border-style: none;
+            }
+        }
+    }
+}
+
+.active {
+    background: #f4f4f5!important;
+    border-radius: 8px;
+}
+
+.vw-my-order-page {
+    a {
+        text-decoration: none;
+    }
+
+    .vw-my-order-page-title {
+        font-family: Montserrat-Bold;
+        font-weight: 600;
+        font-size: 20px;
+        color: #343a40;
+        margin-bottom: 26px;
+        padding-bottom: 17px;
+        border-bottom: 1px solid #ced4da;
+    }
+
+    .flex-column {
+        flex-direction: column!important;
+    }
+
+    .g-color-gray-light-v2 {
+        color: #ccc!important;
+        font-size: 1.14286rem!important;
+        font-weight: 700!important;
+    }
+}
+
+.now-button {
+    font-family: Montserrat-Regular;
+    color: #fff!important;
+    border: none;
+    background: #e8952f;
+    border-radius: 4px!important;
+    font-size: .85rem!important;
+    box-shadow: 0 2px 0 rgba(0,0,0,.045);
+    height: 40px;
+    padding: 6.4px 15px;
+    outline: 0;
+    line-height: 1.5715;
+    position: relative;
+    display: inline-block;
+    font-weight: 400;
+    white-space: nowrap;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    touch-action: manipulation;
+}
+
+.vw-link{
+    color: #2a398c;
+    text-decoration: underline;
+    cursor: pointer;
+}
+

@@ -66,11 +66,14 @@
                             </button>
                         </div>
                         
-                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <div class="link" ngbDropdownMenu aria-labelledby="dropdownBasic1">
                             <!-- <button *ngIf="!isAuthenticated" ngbDropdownItem (click)="openLogin(contentLogin)">Đăng nhập</button> -->
                             <button *ngIf="!isAuthenticated" ngbDropdownItem (click)="openRegister(contentRegister)">Đăng ký</button>
                             <button *ngIf="isAuthenticated" ngbDropdownItem >
                                 <a routerLink="/booked-tour" routerLinkActive="active">Đơn đặt tour</a>
+                            </button>
+                            <button *ngIf="isAuthenticated" ngbDropdownItem >
+                                <a routerLink="/account/user-info">Thông tin tài khoản</a>
                             </button>
                             <button *ngIf="isAuthenticated" ngbDropdownItem (click)="logout()">Đăng xuất</button>
                         </div>

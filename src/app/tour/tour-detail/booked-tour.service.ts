@@ -66,11 +66,14 @@ export class BookedTourService {
                     data.tourDto.description,
                     data.tourDto.fromDate,
                     data.tourDto.toDate,
-                    data.tourDto.price,
+                    data.tourDto.priceAdult,
+                    data.tourDto.priceChild,
+                    data.tourDto.priceBaby,
                     data.tourDto.capacity,
                     data.tourDto.booked,
                     data.tourDto.capacity - data.tourDto.booked, // Tính toán canbook
                     data.tourDto.imageDTO,
+                    data.tourDto.hotelDTOs,
                     null
                 );
                 

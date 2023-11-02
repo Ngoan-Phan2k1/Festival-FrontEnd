@@ -55,8 +55,6 @@ export class VnpayReturnComponent implements OnInit {
       authObs.subscribe({
         next: (data: any) => {
 
-          console.log("data: ", data);
-
           this.isValid = true;
           this.bookedTourId = data.bookedTour.id;
           this.vnp_TxnRef = data.vnp_TxnRef;

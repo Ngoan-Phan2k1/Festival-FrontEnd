@@ -1,6 +1,15 @@
 @import '../../assets/scss/bootstrap/bootstrap';
 @import '../../assets/scss/bootstrap/variables';
 
+@font-face {
+	font-family: Montserrat-Regular;
+	src: url("../../assets/fonts/Montserrat/static/Montserrat-Regular.ttf");
+}
+
+@font-face {
+	font-family: Montserrat-Bold;
+	src: url("../../assets/fonts/Montserrat/static/Montserrat-Bold.ttf");
+}
 
 // $font-primary: 'Poppins',Arial, sans-serif;
 // $font-secondary: 'Cormorant Garamond',Georgia, serif;
@@ -1685,7 +1694,7 @@ h1, h2, h3, h4, h5,
 	.img{
 		position: relative;
 		overflow: hidden;
-		height: 150px;
+		height: 250px;
 		@include border-radius(4px);
 		div.vr{
 			writing-mode: vertical-lr;
@@ -2240,7 +2249,7 @@ h1, h2, h3, h4, h5,
 
 
 .ftco-section {
-	padding: 7em 0;
+	padding: 4em 0;
 	position: relative;
 	@include media-breakpoint-down(sm){
 		padding: 6em 0;
@@ -3310,3 +3319,84 @@ h1, h2, h3, h4, h5,
 //     stroke-dashoffset: -136px;
 //   }
 // }
+
+.img-div {
+	//margin: 15px 0 30px;
+
+	display: flex;
+    align-items: stretch;
+    width: 100%;
+    box-shadow: 0px 1px 7px #bdbdbdd6;
+	margin-bottom: 20px;
+
+	button {
+		font-family: Montserrat-Regular;
+		width: 20%;
+		padding: 13px 20px;
+		background: #1a3863;
+		color: #fff;
+		font-size: 16px;
+		border: none;
+		outline: none;
+
+	}
+
+	input {
+		width: 80%;
+		//padding: 0 20px;
+		padding: 13px 20px;
+		outline: none;
+    	border: none;
+		cursor: not-allowed;
+	}
+
+	.left-button {
+		float: left; /* Căn về phía trái */
+		margin-right: 10px; /* Tạo khoảng cách giữa nút và ô input (tuỳ chọn) */
+	}
+}
+
+img{
+    //height: 100px;
+    display: block;
+    width: 100%;
+    //width: 100%;
+    object-fit: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.vw-link{
+    color: #2a398c;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+mat-icon {
+	cursor: pointer;
+}
+
+.predict {
+	display: flex;
+	h2 {
+		font-family: Montserrat-Regular;
+		color: rgb(137, 32, 32);
+	}
+
+	mat-icon {
+		cursor: pointer;
+		margin-top: 10px;
+	}
+}
+
+.dudoan {
+	cursor: pointer;
+	font-family: Montserrat-Bold;
+	position: relative;
+	display: inline-table;
+	border-bottom: solid 1px #333;
+	width: 290px;
+	margin-bottom: 20px;
+	margin-top: 30px;
+}

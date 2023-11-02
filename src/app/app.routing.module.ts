@@ -13,6 +13,10 @@ import { ContactFormComponent } from './hotel/contact-form/contact-form.componen
 import { FestivalComponent } from './festival/festival.component';
 import { FestivalDetailComponent } from './festival/festival-detail/festival-detail.component';
 import { BookTourComponent } from './book-tour/book-tour.component';
+import { AccountInfoComponent } from './account-info/account-info.component';
+import { UserInfoComponent } from './account-info/user-info/user-info.component';
+import { AuthGuard } from './auth/auth.guard';
+import { OrderComponent } from './account-info/order/order.component';
 
 
 const appRoutes: Routes = [
@@ -21,8 +25,15 @@ const appRoutes: Routes = [
     { path: 'tour', component:  TourComponent },
     { path: 'hotel', component:  HotelComponent},
     { path: 'festival', component: FestivalComponent},
+    { path: 'account', component: AccountInfoComponent,
+        //canActivate: [AuthGuard],
+        children: [
+            {path: 'user-info', component: UserInfoComponent},
+            { path: 'order', component: OrderComponent }
+        ]
+    },
     { path: 'booked-tour', component:  BookedTourComponent },
-    { path: 'book-tour', component:  BookTourComponent },
+    { path: 'book-tour/:id', component:  BookTourComponent },
     { path: 'vnpay_return', component:  VnpayReturnComponent },
     { path: 'festival/detail', component: FestivalDetailComponent},
     { path: 'hotel/detail', component:  HotelDetailComponent,

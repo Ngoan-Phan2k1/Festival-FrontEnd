@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { AuthService, AuthenticationResponse } from '../auth/auth.service';
 import Swal from 'sweetalert2';
+import { UserService } from '../account-info/user.service';
 
 @Component({
   selector: 'app-header',
@@ -45,6 +46,7 @@ export class HeaderComponent implements OnInit {
   }
 
   constructor(
+    private userService: UserService,
     private authService: AuthService,
     private modalServiceLogin: NgbModal,
     private modalServiceResgister: NgbModal
@@ -70,9 +72,15 @@ export class HeaderComponent implements OnInit {
         const parts = user.fullname.split(' '); // Tách chuỗi thành mảng các từ
         this.name = parts[parts.length - 1]; // Lấy phần tử cuối cùng của mảng
       }
-        // console.log(!user);
-        // console.log(!!user);
     });
+
+    this.userService.userChanged.subscribe(
+      (user) => {
+        const parts = user.fullname.split(' '); // Tách chuỗi thành mảng các từ
+        this.name = parts[parts.length - 1]; // Lấy phần tử cuối cùng của mảng
+      }
+    )
+
   }
 
 

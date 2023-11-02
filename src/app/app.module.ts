@@ -28,12 +28,24 @@ import { TourScheduleComponent } from './tour/tour-detail/tour-schedule/tour-sch
 import { FestivalComponent } from './festival/festival.component';
 import { FestivalDetailComponent } from './festival/festival-detail/festival-detail.component';
 import { BookTourComponent } from './book-tour/book-tour.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input'
+import { AccountInfoComponent } from './account-info/account-info.component';
+import { UserInfoComponent } from './account-info/user-info/user-info.component';
+import { OrderComponent } from './account-info/order/order.component';
+import { StickyDirective } from './account-info/sticky.directive';
 
 
 
 
 @NgModule({
   declarations: [
+    
+    StickyDirective,
     AppComponent,
     HeaderComponent,
     HomePageComponent,
@@ -42,7 +54,9 @@ import { BookTourComponent } from './book-tour/book-tour.component';
     FooterComponent,
     TourComponent,
     TourDetailComponent,
+
     BookedTourComponent,
+    
     VnpayReturnComponent,
     HotelComponent,
     HotelDetailComponent,
@@ -52,9 +66,18 @@ import { BookTourComponent } from './book-tour/book-tour.component';
     TourScheduleComponent,
     FestivalComponent,
     FestivalDetailComponent,
-    BookTourComponent
+    BookTourComponent,
+    AccountInfoComponent,
+    UserInfoComponent,
+    OrderComponent
   ],
   imports: [
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatTableModule,
     BrowserModule,
     FormsModule,
     CarouselModule,

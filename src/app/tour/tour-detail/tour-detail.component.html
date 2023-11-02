@@ -55,7 +55,7 @@
                         <div class="media-body">
                             <h3 class="heading mb-3">
                                 <!-- <span>$500</span>  -->
-                                {{tour?.price | currency:'VND':'symbol':'1.0-0'}}
+                                {{tour?.priceAdult | currency:'VND':'symbol':'1.0-0'}}
                             </h3>
                         </div>
                     </div>      
@@ -77,10 +77,10 @@
                         </div>
                         <div class="attr">
                             <ul>
-                                <li >
+                                <!-- <li >
                                     <div class="at">Mã tour</div>
                                     <div class="as">{{ tour?.id }} &nbsp;</div>
-                                </li>
+                                </li> -->
                                 <li >
                                     <div class="at">Thời gian:</div>
                                     <div class="as">{{ tour?.description }} &nbsp;</div>
@@ -95,7 +95,7 @@
                                 </li>
                                 <li *ngIf="tour">
                                     <div class="at">Giá:</div>
-                                    <div class="as"> {{ formatPrice(tour.price) }} &nbsp;</div>
+                                    <div class="as"> {{ formatPrice(tour.priceAdult) }} &nbsp;</div>
                                 </li>
                                 
                                 <li >
@@ -110,7 +110,7 @@
                                 <!-- <button class="mybutton" (click)="open(content)" >
                                     Đặt Tour
                                 </button> -->
-                                <button class="mybutton" (click)="checkLogin()" >
+                                <button class="mybutton" (click)="checkLogin(tour?.id)" >
                                     Đặt Tour
                                 </button>
                         </div>

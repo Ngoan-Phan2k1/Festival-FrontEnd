@@ -18,7 +18,8 @@ import { Contact } from '../hotel/contact-form/contact.model';
 })
 export class BookedTourComponent implements OnInit {
 
-  bookedTours: BookedTourResponse[] = [];
+  // bookedTours: BookedTourResponse[] = [];
+  bookedTours: any[];
   tourist_id: number;
   selectedVNPay: boolean = false;
   amount: number;
@@ -122,7 +123,6 @@ export class BookedTourComponent implements OnInit {
         .set('amount', amount)
         .set('bookedtourId', this.selectedBookedtourId);
 
-    
       this.dataStorageService.checkout(params).subscribe((data) => {
         window.location.href = data.url;
         //const queryParams = new URLSearchParams(window.location.search);
