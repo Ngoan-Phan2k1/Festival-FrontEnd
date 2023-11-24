@@ -26,7 +26,7 @@ const appRoutes: Routes = [
     { path: 'hotel', component:  HotelComponent},
     { path: 'festival', component: FestivalComponent},
     { path: 'account', component: AccountInfoComponent,
-        //canActivate: [AuthGuard],
+        canActivate: [AuthGuard],
         children: [
             {path: 'user-info', component: UserInfoComponent},
             { path: 'order', component: OrderComponent }

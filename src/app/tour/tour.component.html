@@ -25,7 +25,8 @@
                 
                 <div *ngIf="url" class="dudoan">
                     <mat-icon style="float: left; margin-bottom: 10px;">image_search</mat-icon>
-                    Dự đoán
+                    <span *ngIf="label">Dự đoán: {{label}} ({{percent}} %)</span>
+
                 </div>
                 
                 <div class="img-div" *ngIf="!url">

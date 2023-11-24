@@ -44,6 +44,7 @@ export interface tabel_tour {
   priceRoom: number;
   total: number;
   checkout: boolean;
+  status: number;
   tour_url: string;
 }
 
@@ -101,48 +102,51 @@ export class OrderComponent implements OnInit {
 
     this.dataService.getToursByTouristId(this.userService.getUser()?.id, 'token').subscribe(
       (bookeds) => {
-        bookeds.forEach((booked: OrderTour, i) => {
-          const total =
-          (booked?.bookedAdult || 0) * (booked?.tourDto?.priceAdult || 0) +
-          (booked?.bookedChild || 0) * (booked?.tourDto?.priceChild || 0) +
-          (booked?.bookedBaby || 0) * (booked?.tourDto?.priceBaby || 0) +
-          ((booked?.roomDtO?.price || 0) * booked.num_room);
+        if (bookeds.length !== 0) {
+          bookeds.forEach((booked: OrderTour, i) => {
+            let total =
+            (booked?.bookedAdult || 0) * (booked?.tourDto?.priceAdult || 0) +
+            (booked?.bookedChild || 0) * (booked?.tourDto?.priceChild || 0) +
+            (booked?.bookedBaby || 0) * (booked?.tourDto?.priceBaby || 0) +
+            ((booked?.roomDtO?.price || 0) * booked.num_room);
 
-          this.tabel_tour.push({
-            booked_id: booked?.booked_id,
-            name: booked?.tourDto?.name,
-            priceAdult: booked?.tourDto?.priceAdult,
-            priceChild: booked?.tourDto?.priceChild,
-            priceBaby: booked?.tourDto?.priceBaby,
-            bookedAdult: booked?.bookedAdult,
-            bookedChild: booked?.bookedChild,
-            bookedBaby: booked?.bookedBaby,
-            description: booked?.tourDto?.description,
-            fromDate: booked?.tourDto?.fromDate,
-            toDate: booked?.tourDto?.toDate,
-            fromWhere: booked?.tourDto?.fromWhere,
-            toWhere: booked?.tourDto?.toWhere,
-            fullname: booked?.fullname,
-            email: booked?.email,
-            address: booked?.address,
-            note: booked?.note,
-            num_room: booked?.num_room,
-            phone: booked?.phone,
-            hotel: booked?.roomDtO?.hotelDTO?.name,
-            room: booked?.roomDtO?.name,
-            priceRoom: booked?.roomDtO?.price,
-            total: total,
-            checkout: booked?.checkout,
-            tour_url: ''
+            this.tabel_tour.push({
+              booked_id: booked?.booked_id,
+              name: booked?.tourDto?.name,
+              priceAdult: booked?.tourDto?.priceAdult,
+              priceChild: booked?.tourDto?.priceChild,
+              priceBaby: booked?.tourDto?.priceBaby,
+              bookedAdult: booked?.bookedAdult,
+              bookedChild: booked?.bookedChild,
+              bookedBaby: booked?.bookedBaby,
+              description: booked?.tourDto?.description,
+              fromDate: booked?.tourDto?.fromDate,
+              toDate: booked?.tourDto?.toDate,
+              fromWhere: booked?.tourDto?.fromWhere,
+              toWhere: booked?.tourDto?.toWhere,
+              fullname: booked?.fullname,
+              email: booked?.email,
+              address: booked?.address,
+              note: booked?.note,
+              num_room: booked?.num_room,
+              phone: booked?.phone,
+              hotel: booked?.roomDtO?.hotelDTO?.name,
+              room: booked?.roomDtO?.name,
+              priceRoom: booked?.roomDtO?.price,
+              total: total,
+              checkout: booked?.checkout,
+              status: booked?.status,
+              tour_url: ''
+            })
+
+            this.dataService.downloadImageByName(booked?.tourDto?.imageDTO?.name).subscribe(
+              (res) => {
+                this.tabel_tour[i].tour_url = res?.url;
+              }
+            )
+
           })
-
-          this.dataService.downloadImageByName(booked?.tourDto?.imageDTO?.name).subscribe(
-            (res) => {
-              this.tabel_tour[i].tour_url = res?.url;
-            }
-          )
-
-        })
+        }
 
         this.dataSource = new MatTableDataSource<tabel_tour>(this.tabel_tour);
         this.dataSource.paginator = this.paginator;
@@ -296,6 +300,7 @@ export class OrderComponent implements OnInit {
                 priceRoom: booked?.roomDtO?.price,
                 total: total,
                 checkout: booked?.checkout,
+                status: booked?.status,
                 tour_url: ''
               })
     
