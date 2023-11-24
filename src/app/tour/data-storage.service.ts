@@ -25,7 +25,7 @@ export class DataStorageService {
     fetchTours() {
         return this.http
         .get<Tour[]>(
-          'http://localhost:8080/api/tour'
+          'http://localhost:8080/api/tour/active'
         )
         .pipe(
             map(tours => {
@@ -92,8 +92,7 @@ export class DataStorageService {
         return this.http
         .get<OrderTour[]>(
           `http://localhost:8080/api/user/booked/tourist/${id}`
-        )
-        
+        )    
     }
 
     checkout(params: HttpParams): Observable<any> {

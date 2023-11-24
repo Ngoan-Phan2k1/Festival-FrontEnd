@@ -14,6 +14,7 @@ export class OrderTour {
         public num_room: number,
         public phone: string,
         public dateOfBooking: Date,
+        public status: number,
         public tourDto: Tour,
         public roomDtO: Room,
         public checkout: boolean,

@@ -195,7 +195,7 @@ export class TourDetailComponent implements OnInit {
     authObs = this.bookedTourService.bookedTour(booked, phone, tourId, touristId);
     authObs.subscribe({
       next: (resData: any) => {
-        console.log(resData);
+        //console.log(resData);
         Swal.close()
         Swal.fire({
           icon: 'success',

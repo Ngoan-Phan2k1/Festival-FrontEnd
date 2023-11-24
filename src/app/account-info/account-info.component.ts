@@ -3,6 +3,7 @@ import { DataStorageService } from '../tour/data-storage.service';
 import { UserService } from './user.service';
 import { AuthService } from '../auth/auth.service';
 import { User } from '../auth/user.model';
+import { UserInfo } from './user-info/userinfo.model';
 
 @Component({
   selector: 'app-account-info',
@@ -14,6 +15,8 @@ export class AccountInfoComponent implements OnInit {
   url = null;
   userData: User;
   isAuthenticated = false;
+
+  userInfo: UserInfo;
 
   constructor(
     private userService: UserService,
@@ -31,12 +34,17 @@ export class AccountInfoComponent implements OnInit {
       if (this.isAuthenticated) {
         this.dataService.getTouristById(user?.touristId).subscribe(
           (user) => {
+            this.userInfo = user;
             this.userService.setUser(user);
-            this.dataService.downloadImageByName(user?.imageDTO?.name).subscribe(
-              (res) => {
-                this.url = res.url;
-              }
-            )
+
+            if (user.imageDTO) {
+              this.dataService.downloadImageByName(user?.imageDTO?.name).subscribe(
+                (res) => {
+                  this.url = res.url;
+                }
+              )
+            }
+            
           }
         )
       }

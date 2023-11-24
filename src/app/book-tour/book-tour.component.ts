@@ -298,10 +298,10 @@ export class BookTourComponent implements OnInit {
 
     }
 
-    const adult = form.value.adult;
-    const child = form.value.child;
-    const baby = form.value.baby;
-    const num_room = form.value.num_room;
+    let adult = form.value.adult;
+    let child = form.value.child;
+    let baby = form.value.baby;
+    let num_room = form.value.num_room;
     if (num_room > (adult + child + baby)) {
       alert('Quý khách chỉ có thể chọn số phòng tối đa dựa trên số người đặt tour hiện tại');
       return;

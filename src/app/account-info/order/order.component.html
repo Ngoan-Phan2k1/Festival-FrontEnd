@@ -118,9 +118,12 @@
             </ng-container>
           
             <ng-container matColumnDef="status">
-              <th mat-header-cell *matHeaderCellDef style="width: 300px;"> Trạng thái </th>
+              <th mat-header-cell *matHeaderCellDef style="width: 850px;"> Trạng thái </th>
               <td mat-cell *matCellDef="let element" class="mth">
-                Đã thanh toán
+                <span *ngIf="element.status === 0">Đang xử lý</span>
+                <span *ngIf="element.status === 1">Đã tiếp nhận</span>
+                <span *ngIf="element.status === 2">Đã thanh toán</span>
+                <span *ngIf="element.status === 3">Đã kết thúc</span>
               </td>
             </ng-container>
 
@@ -145,7 +148,6 @@
                         Thanh toán
                       </button>
                     </div>
-
                   </div>
                     
                 </td>

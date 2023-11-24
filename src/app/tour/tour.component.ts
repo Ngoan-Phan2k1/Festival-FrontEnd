@@ -20,6 +20,9 @@ export class TourComponent implements OnInit {
   predicted = '';
   context: CanvasRenderingContext2D;
 
+  label: string;
+  percent: number;
+
   constructor(
     private router: Router,
     private dataStorageService: DataStorageService, 
@@ -100,6 +103,40 @@ export class TourComponent implements OnInit {
       this.dataStorageService.prediction(this.file).subscribe(
         (data) => {
           
+          this.percent = data?.percent;
+          if (data.label === '0') {
+            this.label = 'Lễ hội Cầu Ngư';
+          }
+          else if (data.label === '1') {
+            this.label = 'Lễ hội chùa Hương';
+          }
+          else if (data.label === '2') {
+            this.label = 'Lễ hội đua bò Bảy Núi';
+          }
+          else if (data.label === '3') {
+            this.label = 'Lễ hội đua voi Tây Nguyên';
+          }
+          else if (data.label === '4') {
+            this.label = 'Lễ hội giỗ tổ Hùng Vương';
+          }
+          else if (data.label === '5') {
+            this.label = 'Lễ hội Gióng';
+          }
+          else if (data.label === '6') {
+            this.label = 'Lễ hội Gò Đống Đa';
+          }
+          else if (data.label === '7') {
+            this.label = 'Lễ hội Kate';
+          }
+          else if (data.label === '8') {
+            this.label = 'Lễ hội Lim';
+          }
+          else if (data.label === '9') {
+            this.label = 'Lễ hội vía Bà Chúa Xứ';
+          }
+          else if (data.label === '10') {
+            this.label = 'Lễ hội Yên Tử';
+          }
         }
       )
       const selectedImage = fileList[0];
